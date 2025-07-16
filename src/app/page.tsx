@@ -5,7 +5,7 @@ import { WHATSAPP_NUMBER } from "@/config";
 
 export default function Home() {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [snowflakes, setSnowflakes] = useState<React.ReactNode[]>([]);
+  const [sunbeams, setSunbeams] = useState<React.ReactNode[]>([]);
 
   useEffect(() => {
     const handleMouseMove = (event: MouseEvent) => {
@@ -13,21 +13,19 @@ export default function Home() {
     };
     window.addEventListener("mousemove", handleMouseMove);
     
-    const createSnowflakes = () => {
-      const flakes = Array.from({ length: 100 }).map((_, i) => {
+    const createSunbeams = () => {
+      const beams = Array.from({ length: 12 }).map((_, i) => {
         const style = {
-          left: `${Math.random() * 100}vw`,
-          width: `${Math.random() * 3 + 1}px`,
-          height: `${Math.random() * 3 + 1}px`,
-          animationDuration: `${Math.random() * 5 + 5}s`,
+          transform: `rotate(${i * 15 - 82.5}deg)`,
           animationDelay: `${Math.random() * 5}s`,
+          animationDuration: `${Math.random() * 5 + 10}s`,
         };
-        return <div key={i} className="snowflake" style={style}></div>;
+        return <div key={i} className="sunbeam" style={style}></div>;
       });
-      setSnowflakes(flakes);
+      setSunbeams(beams);
     };
 
-    createSnowflakes();
+    createSunbeams();
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
@@ -42,7 +40,7 @@ export default function Home() {
         background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, hsla(var(--primary) / 0.15), transparent 80%)`,
       }}
     >
-      <div className="snow">{snowflakes}</div>
+      <div className="sunbeams">{sunbeams}</div>
       <h1
         className="glitch-text text-5xl md:text-8xl lg:text-9xl text-center select-none"
         data-text={text}

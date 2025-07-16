@@ -196,7 +196,7 @@ body {
     }
   }
 
-  .snow {
+  .sunbeams {
     position: absolute;
     top: 0;
     left: 0;
@@ -204,20 +204,30 @@ body {
     height: 100vh;
     overflow: hidden;
   }
-  
-  .snow .snowflake {
+
+  .sunbeam {
     position: absolute;
-    background: hsl(var(--primary) / 0.4);
-    border-radius: 50%;
-    animation: fall linear infinite;
+    top: -50%;
+    left: 50%;
+    width: 4px;
+    height: 150%;
+    background: linear-gradient(to bottom, hsla(var(--primary) / 0.2) 0%, hsla(var(--primary) / 0) 100%);
+    transform-origin: top center;
+    animation: radiate 10s linear infinite;
   }
 
-  @keyframes fall {
+  @keyframes radiate {
     0% {
-      transform: translateY(-10vh);
+      transform: rotate(0deg) scaleY(1);
+      opacity: 0.2;
+    }
+    50% {
+      transform: rotate(10deg) scaleY(1.05);
+      opacity: 0.3;
     }
     100% {
-      transform: translateY(110vh);
+      transform: rotate(0deg) scaleY(1);
+      opacity: 0.2;
     }
   }
 }
