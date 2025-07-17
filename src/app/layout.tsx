@@ -2,7 +2,7 @@ import type {Metadata} from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Glitch Launch',
+  title: 'My Awesome App',
   description: 'Coming Soon',
 };
 
