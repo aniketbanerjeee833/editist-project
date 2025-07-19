@@ -68,6 +68,7 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
 
     return {
       success: true,
+
       message: "Thanks for reaching out. We'll get back to you shortly.",
     };
 
