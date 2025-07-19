@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
 import { useToast } from "@/hooks/use-toast"
 import { Mail, Phone, MapPin } from "lucide-react"
+import { motion } from "framer-motion"
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -46,19 +47,35 @@ export default function ContactPage() {
     form.reset()
   }
 
+  const sectionVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  };
+
   return (
     <section className="py-20 md:py-32 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial="hidden"
+          animate="visible"
+          variants={sectionVariants}
+        >
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
             Get in Touch
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
             We'd love to hear from you. Fill out the form below and we'll get back to you as soon as possible.
           </p>
-        </div>
+        </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-          <div className="bg-secondary/30 p-8 rounded-lg">
+          <motion.div 
+            className="bg-secondary/30 p-8 rounded-lg"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={sectionVariants}
+          >
             <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
             <div className="space-y-4">
               <div className="flex items-center gap-4">
@@ -74,8 +91,13 @@ export default function ContactPage() {
                 <span className="text-muted-foreground">123 Awesome Street<br />Tech City, TC 54321</span>
               </div>
             </div>
-          </div>
-          <div>
+          </motion.div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            variants={sectionVariants}
+          >
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
                 <FormField
@@ -133,7 +155,7 @@ export default function ContactPage() {
                 <Button type="submit" size="lg">Send Message</Button>
               </form>
             </Form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
