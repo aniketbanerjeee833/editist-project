@@ -3,17 +3,13 @@
 import React, { useEffect, useRef } from 'react';
 
 const CustomCursor = () => {
-  const cursorDotRef = useRef<HTMLDivElement>(null);
   const cursorOutlineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const { clientX, clientY } = e;
 
-      if (cursorDotRef.current && cursorOutlineRef.current) {
-        cursorDotRef.current.style.left = `${clientX}px`;
-        cursorDotRef.current.style.top = `${clientY}px`;
-        
+      if (cursorOutlineRef.current) {
         cursorOutlineRef.current.animate({
           left: `${clientX}px`,
           top: `${clientY}px`
@@ -37,7 +33,6 @@ const CustomCursor = () => {
 
   return (
     <>
-      <div ref={cursorDotRef} className="cursor-dot"></div>
       <div ref={cursorOutlineRef} className="cursor-outline"></div>
     </>
   );

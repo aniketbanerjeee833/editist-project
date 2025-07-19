@@ -4,7 +4,6 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  cursor: none;
 }
 
 @layer base {
@@ -88,11 +87,10 @@ body {
   }
 
   a, button {
-    cursor: none;
+    cursor: pointer;
   }
 }
 
-.cursor-dot,
 .cursor-outline {
   pointer-events: none;
   position: fixed;
@@ -103,16 +101,6 @@ body {
   transform: translate(-50%, -50%);
   transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
   z-index: 9999;
-}
-
-.cursor-dot {
-  width: 8px;
-  height: 8px;
-  background-color: hsl(var(--primary));
-  transition: transform 0.1s ease-out;
-}
-
-.cursor-outline {
   width: 40px;
   height: 40px;
   background-color: hsla(var(--primary) / 0.3);
