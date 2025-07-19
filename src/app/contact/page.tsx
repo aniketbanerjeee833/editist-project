@@ -1,3 +1,4 @@
+
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
@@ -17,6 +18,9 @@ import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
+import { submitContactForm } from "./actions"
+import { useState } from "react"
+import { Loader2 } from "lucide-react"
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters." }),
@@ -26,6 +30,7 @@ const formSchema = z.object({
 })
 
 export default function ContactPage() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -36,13 +41,24 @@ export default function ContactPage() {
     },
   })
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values)
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. We'll get back to you shortly.",
-    })
-    form.reset()
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsSubmitting(true);
+    const result = await submitContactForm(values);
+    setIsSubmitting(false);
+
+    if (result.success) {
+      toast({
+        title: "Message Sent!",
+        description: result.message,
+      });
+      form.reset();
+    } else {
+      toast({
+        variant: "destructive",
+        title: "Oops! Something went wrong.",
+        description: result.message,
+      });
+    }
   }
 
   const sectionVariants = {
@@ -131,7 +147,10 @@ export default function ContactPage() {
                   </FormItem>
                 )}
               />
-              <Button type="submit" size="lg" className="w-full">Send Message</Button>
+              <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
+                {isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />}
+                {isSubmitting ? "Sending..." : "Send Message"}
+              </Button>
             </form>
           </Form>
         </motion.div>
