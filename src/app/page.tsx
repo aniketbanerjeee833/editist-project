@@ -1,68 +1,161 @@
-"use client";
 
-import { useEffect, useState } from "react";
-import { WHATSAPP_NUMBER } from "@/config";
+"use client"
+
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
+import { Check, Zap, Code, Rocket, Star } from "lucide-react"
 
 export default function Home() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [sunbeams, setSunbeams] = useState<React.ReactNode[]>([]);
-
-  useEffect(() => {
-    const handleMouseMove = (event: MouseEvent) => {
-      setMousePosition({ x: event.clientX, y: event.clientY });
-    };
-    window.addEventListener("mousemove", handleMouseMove);
-    
-    const createSunbeams = () => {
-      const beams = Array.from({ length: 12 }).map((_, i) => {
-        const style = {
-          transform: `rotate(${i * 15 - 82.5}deg)`,
-          animationDelay: `${Math.random() * 5}s`,
-          animationDuration: `${Math.random() * 5 + 10}s`,
-        };
-        return <div key={i} className="sunbeam" style={style}></div>;
-      });
-      setSunbeams(beams);
-    };
-
-    createSunbeams();
-
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
-    };
-  }, []);
-
-  const text = "Coming Soon";
   return (
-    <main
-      className="flex items-center justify-center min-h-screen animated-grid p-4 relative overflow-hidden"
-      style={{
-        background: `radial-gradient(600px at ${mousePosition.x}px ${mousePosition.y}px, hsla(var(--primary) / 0.15), transparent 80%)`,
-      }}
-    >
-      <div className="sunbeams">{sunbeams}</div>
-      <h1
-        className="glitch-text text-5xl md:text-8xl lg:text-9xl text-center select-none"
-        data-text={text}
-      >
-        {text}
-      </h1>
-      <a
-        href={`https://wa.me/${WHATSAPP_NUMBER}`}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="fixed bottom-4 right-4 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg transition-transform hover:scale-110 select-none"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="white"
-          viewBox="0 0 24 24"
-          className="h-7 w-7"
-        >
-          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.472-.148-.672.15-.197.297-.768.967-.94 1.164-.173.198-.347.223-.644.075-.297-.15-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.52.149-.174.198-.298.298-.497.1-.198.05-.373-.025-.521-.075-.148-.672-1.611-.922-2.207-.242-.579-.487-.501-.672-.51l-.57-.01c-.198 0-.52.074-.792.373s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.1 3.2 5.077 4.487.709.306 1.262.489 1.694.626.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.617h-.001a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.65-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884a9.84 9.84 0 0 1 6.986 2.897 9.824 9.824 0 0 1 2.896 6.987c-.003 5.45-4.437 9.884-9.889 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05.001C5.495 0 .16 5.336.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.88 11.88 0 0 0 5.683 1.445h.005c6.554 0 11.891-5.336 11.894-11.892a11.82 11.82 0 0 0-3.484-8.412"/>
-        </svg>
-        <span className="sr-only">Contact on WhatsApp</span>
-      </a>
-    </main>
-  );
+    <div className="flex flex-col min-h-screen bg-background text-foreground">
+      <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
+        <h1 className="text-2xl font-bold text-primary">My Awesome App</h1>
+        <nav>
+          <Button variant="ghost">Sign In</Button>
+          <Button>Get Started</Button>
+        </nav>
+      </header>
+
+      <main className="flex-grow">
+        <section id="hero" className="text-center py-20 md:py-32">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+              The Future of Awesome is Here
+            </h2>
+            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
+              Discover a new way to be more productive and creative. Our platform provides the tools you need to succeed and stand out.
+            </p>
+            <div className="flex justify-center gap-4">
+              <Button size="lg">Start Your Free Trial</Button>
+              <Button size="lg" variant="outline">Learn More</Button>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" className="py-20 bg-secondary/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold">Features You'll Love</h3>
+              <p className="text-muted-foreground mt-2">Everything you need to boost your workflow.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
+                    <Zap className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="mt-4">Lightning Fast</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Experience unparalleled speed and performance that keeps you in the flow.</p>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
+                    <Code className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="mt-4">Developer Friendly</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Easy-to-use APIs and documentation that developers will adore.</p>
+                </CardContent>
+              </Card>
+              <Card className="text-center">
+                <CardHeader>
+                  <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
+                    <Rocket className="h-8 w-8 text-primary" />
+                  </div>
+                  <CardTitle className="mt-4">Ready to Launch</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <p className="text-muted-foreground">Get started in minutes and deploy your projects with a single click.</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section id="testimonials" className="py-20">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold">What Our Users Say</h3>
+              <p className="text-muted-foreground mt-2">Real stories from happy customers.</p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <Card>
+                <CardContent className="pt-6">
+                  <div className="flex items-center mb-4">
+                    <div className="flex text-yellow-400">
+                      <Star /><Star /><Star /><Star /><Star />
+                    </div>
+                  </div>
+                  <blockquote className="text-lg italic">"This app has revolutionized my workflow. I can't imagine working without it now. Highly recommended!"</blockquote>
+                  <p className="text-right font-semibold mt-4">- Alex Johnson</p>
+                </CardContent>
+              </Card>
+              <Card>
+                <CardContent className="pt-6">
+                   <div className="flex items-center mb-4">
+                    <div className="flex text-yellow-400">
+                      <Star /><Star /><Star /><Star /><Star />
+                    </div>
+                  </div>
+                  <blockquote className="text-lg italic">"An essential tool for any serious professional. The features are top-notch and the support is incredible."</blockquote>
+                  <p className="text-right font-semibold mt-4">- Samantha Lee</p>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+
+        <section id="pricing" className="py-20 bg-secondary/30">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h3 className="text-3xl md:text-4xl font-bold">Simple, Transparent Pricing</h3>
+              <p className="text-muted-foreground mt-2">Choose the plan that's right for you.</p>
+            </div>
+            <div className="flex flex-col md:flex-row justify-center gap-8">
+              <Card className="flex-1 max-w-md">
+                <CardHeader>
+                  <CardTitle>Basic</CardTitle>
+                  <CardDescription>For individuals and small teams</CardDescription>
+                  <p className="text-4xl font-bold pt-4">$10<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-4">
+                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> 5 Projects</li>
+                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Basic Analytics</li>
+                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Community Support</li>
+                  </ul>
+                  <Button className="w-full mt-6">Choose Basic</Button>
+                </CardContent>
+              </Card>
+              <Card className="flex-1 max-w-md border-primary shadow-lg">
+                 <CardHeader>
+                  <CardTitle>Pro</CardTitle>
+                  <CardDescription>For growing businesses and power users</CardDescription>
+                  <p className="text-4xl font-bold pt-4">$25<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
+                </CardHeader>
+                <CardContent>
+                   <ul className="space-y-4">
+                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Unlimited Projects</li>
+                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Advanced Analytics</li>
+                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Priority Support</li>
+                  </ul>
+                  <Button className="w-full mt-6">Choose Pro</Button>
+                </CardContent>
+              </Card>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-muted-foreground">
+          <p>&copy; {new Date().getFullYear()} My Awesome App. All rights reserved.</p>
+        </div>
+      </footer>
+    </div>
+  )
 }
