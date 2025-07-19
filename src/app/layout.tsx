@@ -1,14 +1,53 @@
-import type {Metadata} from 'next';
-import './globals.css';
-import { Toaster } from "@/components/ui/toaster"
-import { Instagram, Youtube } from "lucide-react"
+import type { Metadata } from "next";
+import "./globals.css";
+import { Toaster } from "@/components/ui/toaster";
+import { Instagram, Youtube } from "lucide-react";
 import Link from 'next/link';
 import CustomCursor from '@/components/custom-cursor';
 import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
-  title: 'Glitch Launch | Professional Video Editing',
-  description: 'High-quality, professional video editing services to bring your vision to life.',
+  title: 'Glitch Launch | Professional Video Editing Services',
+  description: 'High-quality, professional video editing services to bring your vision to life. We specialize in cinematic editing, color grading, and motion graphics.',
+  keywords: ['video editing', 'professional video editing', 'cinematic editing', 'color grading', 'motion graphics', 'post-production', 'video services'],
+  authors: [{ name: 'Glitch Launch' }],
+  openGraph: {
+    title: 'Glitch Launch | Professional Video Editing Services',
+    description: 'High-quality, professional video editing services to bring your vision to life.',
+    url: 'https://glitchlaunch.com', // Replace with your actual domain
+    siteName: 'Glitch Launch',
+    images: [
+      {
+        url: 'https://glitchlaunch.com/og-image.png', // Replace with your actual OG image URL
+        width: 1200,
+        height: 630,
+        alt: 'Glitch Launch Video Editing Services',
+      },
+    ],
+    locale: 'en_US',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Glitch Launch | Professional Video Editing Services',
+    description: 'High-quality, professional video editing services to bring your vision to life.',
+    images: ['https://glitchlaunch.com/twitter-image.png'], // Replace with your actual Twitter image URL
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
+  alternates: {
+    canonical: 'https://glitchlaunch.com', // Replace with your actual domain
+  },
+  themeColor: '#111827',
 };
 
 export default function RootLayout({
