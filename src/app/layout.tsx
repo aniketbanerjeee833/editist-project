@@ -35,7 +35,7 @@ export default function RootLayout({
         <footer className="border-t bg-secondary/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-              <div className="col-span-1 md:col-span-1">
+              <div className="col-span-1 md:col-span-2">
                 <h2 className="text-xl font-bold mb-2">Glitch Launch</h2>
                 <p className="text-muted-foreground text-sm">The future of awesome is here. Build faster, better, and more beautifully than ever before.</p>
               </div>
@@ -44,14 +44,6 @@ export default function RootLayout({
                 <ul className="space-y-2 text-sm">
                   <li><a href="#features" className="text-muted-foreground hover:text-foreground">Features</a></li>
                   <li><a href="#testimonials" className="text-muted-foreground hover:text-foreground">Testimonials</a></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-4">Company</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">About Us</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">Careers</a></li>
-                  <li><a href="/contact" className="text-muted-foreground hover:text-foreground">Contact</a></li>
                 </ul>
               </div>
               <div>
