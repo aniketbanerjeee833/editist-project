@@ -47,7 +47,7 @@ export default function ContactPage() {
   }
 
   return (
-    <section className="py-20 md:py-32">
+    <section className="py-20 md:py-32 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
@@ -137,5 +137,5 @@ export default function ContactPage() {
         </div>
       </div>
     </section>
-  )
+  );
 }

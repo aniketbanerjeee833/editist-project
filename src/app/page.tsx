@@ -7,7 +7,7 @@ import { Check, Zap, Code, Rocket, Star } from "lucide-react"
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen pt-16">
       <section id="hero" className="text-center py-20 md:py-32">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">

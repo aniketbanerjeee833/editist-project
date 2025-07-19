@@ -1,10 +1,10 @@
 import type {Metadata} from 'next';
 import './globals.css';
 import { Toaster } from "@/components/ui/toaster"
-import { Button } from "@/components/ui/button"
 import { Instagram, Youtube } from "lucide-react"
 import Link from 'next/link';
 import CustomCursor from '@/components/custom-cursor';
+import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
   title: 'My Awesome App',
@@ -26,14 +26,7 @@ export default function RootLayout({
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
         <CustomCursor />
-        <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-          <Link href="/" className="text-2xl font-bold text-primary">Glitch Launch</Link>
-          <nav className="hidden md:flex items-center gap-4">
-            <Button variant="ghost" asChild><Link href="/">Home</Link></Button>
-            <Button variant="ghost" asChild><Link href="/projects">Projects</Link></Button>
-            <Button variant="ghost" asChild><Link href="/contact">Contact</Link></Button>
-          </nav>
-        </header>
+        <Header />
 
         <main className="flex-grow">
           {children}
@@ -59,7 +52,7 @@ export default function RootLayout({
                 <ul className="space-y-2 text-sm">
                   <li><a href="#" className="text-muted-foreground hover:text-foreground">About Us</a></li>
                   <li><a href="#" className="text-muted-foreground hover:text-foreground">Careers</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">Contact</a></li>
+                  <li><a href="/contact" className="text-muted-foreground hover:text-foreground">Contact</a></li>
                 </ul>
               </div>
               <div>
