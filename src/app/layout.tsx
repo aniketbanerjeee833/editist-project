@@ -29,8 +29,6 @@ export default function RootLayout({
           <nav className="hidden md:flex items-center gap-4">
             <Button variant="ghost" asChild><Link href="/">Home</Link></Button>
             <Button variant="ghost" asChild><Link href="/projects">Projects</Link></Button>
-            <Button variant="ghost">Sign In</Button>
-            <Button>Get Started</Button>
           </nav>
         </header>
 
