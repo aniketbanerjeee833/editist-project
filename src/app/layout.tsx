@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster"
 import { Button } from "@/components/ui/button"
 import { Instagram, Youtube } from "lucide-react"
 import Link from 'next/link';
+import CustomCursor from '@/components/custom-cursor';
 
 export const metadata: Metadata = {
   title: 'My Awesome App',
@@ -24,6 +25,7 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
       <body className="font-sans antialiased bg-background text-foreground">
+        <CustomCursor />
         <header className="container mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
           <Link href="/" className="text-2xl font-bold text-primary">Glitch Launch</Link>
           <nav className="hidden md:flex items-center gap-4">
