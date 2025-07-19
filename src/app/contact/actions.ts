@@ -21,12 +21,46 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
   }
 
   // At this point, the data is validated on the server.
-  // You can now securely handle it, for example, by sending an email.
-  // console.log('Validated data:', validatedFields.data);
+  // You can now securely handle it. The validated data is available in `validatedFields.data`.
+  const { name, email, subject, message } = validatedFields.data;
 
-  // Replace this with your actual email sending logic (e.g., using Resend, Nodemailer, etc.)
-  // For demonstration, we'll just simulate a successful submission.
+  // =================================================================
+  //  YOUR LOGIC GOES HERE
+  // =================================================================
+  // For example, you could send an email using a service like Resend or Nodemailer.
+  //
+  // Example with a logging statement:
+  console.log('Received new contact form submission:');
+  console.log('Name:', name);
+  console.log('Email:', email);
+  console.log('Subject:', subject);
+  console.log('Message:', message);
+  //
+  // Example with a pseudo-email sending function:
+  //
+  // try {
+  //   await sendEmail({
+  //     from: 'your-email@yourdomain.com',
+  //     to: 'your-receiving-email@yourdomain.com',
+  //     subject: `New message from ${name}: ${subject}`,
+  //     text: `From: ${name} <${email}>\n\n${message}`,
+  //   });
+  //
+  //   return {
+  //     success: true,
+  //     message: "Thanks for reaching out. We'll get back to you shortly.",
+  //   };
+  //
+  // } catch (error) {
+  //   console.error("Failed to send email:", error);
+  //   return {
+  //     success: false,
+  //     message: "Sorry, we couldn't send your message. Please try again later.",
+  //   };
+  // }
+  // =================================================================
   
+  // For demonstration, we'll just simulate a successful submission without sending an email.
   return {
     success: true,
     message: "Thanks for reaching out. We'll get back to you shortly.",
