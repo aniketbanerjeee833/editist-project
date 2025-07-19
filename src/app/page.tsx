@@ -151,62 +151,6 @@ export default function Home() {
           </div>
         </div>
       </motion.section>
-
-      <motion.section 
-        id="pricing" 
-        className="py-20 bg-secondary/30"
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        variants={sectionVariants}
-      >
-        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold">Simple, Transparent Pricing</h3>
-            <p className="text-muted-foreground mt-2">Choose the plan that's right for you.</p>
-          </div>
-          <div className="flex flex-col md:flex-row justify-center items-stretch gap-8">
-             <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants} className="flex">
-              <Card className="flex-1 max-w-md w-full flex flex-col">
-                <CardHeader>
-                  <CardTitle>Basic</CardTitle>
-                  <CardDescription>For individuals and small teams</CardDescription>
-                  <p className="text-4xl font-bold pt-4">$10<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                  <ul className="space-y-4">
-                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> 5 Projects</li>
-                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Basic Analytics</li>
-                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Community Support</li>
-                  </ul>
-                </CardContent>
-                <div className="p-6 pt-0">
-                  <Button className="w-full mt-6">Choose Basic</Button>
-                </div>
-              </Card>
-            </motion.div>
-            <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants} className="flex">
-              <Card className="flex-1 max-w-md border-primary shadow-lg w-full flex flex-col">
-                 <CardHeader>
-                  <CardTitle>Pro</CardTitle>
-                  <CardDescription>For growing businesses and power users</CardDescription>
-                  <p className="text-4xl font-bold pt-4">$25<span className="text-lg font-normal text-muted-foreground">/mo</span></p>
-                </CardHeader>
-                <CardContent className="flex-grow">
-                   <ul className="space-y-4">
-                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Unlimited Projects</li>
-                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Advanced Analytics</li>
-                    <li className="flex items-center"><Check className="h-5 w-5 text-green-500 mr-2" /> Priority Support</li>
-                  </ul>
-                </CardContent>
-                <div className="p-6 pt-0">
-                  <Button className="w-full mt-6">Choose Pro</Button>
-                </div>
-              </Card>
-            </motion.div>
-          </div>
-        </div>
-      </motion.section>
     </div>
   )
 }
