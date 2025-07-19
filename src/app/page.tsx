@@ -4,6 +4,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Check, Zap, Code, Rocket, Star } from "lucide-react"
+import Link from "next/link"
 
 export default function Home() {
   return (
@@ -17,8 +18,9 @@ export default function Home() {
             Discover a new way to be more productive and creative. Our platform provides the tools you need to succeed and stand out.
           </p>
           <div className="flex justify-center gap-4">
-            <Button size="lg">Start Your Free Trial</Button>
-            <Button size="lg" variant="outline">Learn More</Button>
+            <Button size="lg" asChild>
+              <Link href="/contact">Get in touch</Link>
+            </Button>
           </div>
         </div>
       </section>
