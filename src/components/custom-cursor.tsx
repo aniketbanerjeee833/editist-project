@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const CustomCursor = () => {
   const cursorDotRef = useRef<HTMLDivElement>(null);
@@ -11,9 +11,12 @@ const CustomCursor = () => {
       const { clientX, clientY } = e;
 
       if (cursorDotRef.current && cursorOutlineRef.current) {
-        cursorDotRef.current.style.transform = `translate(${clientX}px, ${clientY}px)`;
+        cursorDotRef.current.style.left = `${clientX}px`;
+        cursorDotRef.current.style.top = `${clientY}px`;
+        
         cursorOutlineRef.current.animate({
-          transform: `translate(${clientX - 20}px, ${clientY - 20}px)`
+          left: `${clientX}px`,
+          top: `${clientY}px`
         }, { duration: 500, fill: "forwards" });
       }
 
