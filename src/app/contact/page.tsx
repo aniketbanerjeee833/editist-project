@@ -14,7 +14,7 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
-import { useToast } from "@/hooks/use-toast"
+import { toast } from "@/hooks/use-toast"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
 
@@ -26,8 +26,6 @@ const formSchema = z.object({
 })
 
 export default function ContactPage() {
-  const { toast } = useToast()
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {

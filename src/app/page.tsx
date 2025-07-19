@@ -123,7 +123,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-              <Card className="h-full">
+              <Card className="h-full bg-secondary/30">
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-4">
                     <div className="flex text-yellow-400">
@@ -136,7 +136,7 @@ export default function Home() {
               </Card>
             </motion.div>
              <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
-              <Card className="h-full">
+              <Card className="h-full bg-secondary/30">
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-4">
                     <div className="flex text-yellow-400">
