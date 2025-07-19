@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Check, Zap, Code, Rocket, Star } from "lucide-react"
+import { Film, Palette, PlaySquare, Star } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 
@@ -38,10 +38,10 @@ export default function Home() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-            The Future of Awesome is Here
+            Professional Video Editing, For Your Vision
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-            Discover a new way to be more productive and creative. Our platform provides the tools you need to succeed and stand out.
+            We provide high-quality, professional video editing services to bring your story to life. From corporate videos to cinematic films, we make your content shine.
           </p>
           <div className="flex justify-center gap-4">
             <Button size="lg" asChild>
@@ -61,20 +61,20 @@ export default function Home() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold">Features You'll Love</h3>
-            <p className="text-muted-foreground mt-2">Everything you need to boost your workflow.</p>
+            <h3 className="text-3xl md:text-4xl font-bold">Services We Offer</h3>
+            <p className="text-muted-foreground mt-2">Everything you need for a stunning final cut.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
               <Card className="text-center h-full">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
-                    <Zap className="h-8 w-8 text-primary" />
+                    <Film className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">Lightning Fast</CardTitle>
+                  <CardTitle className="mt-4">Cinematic Editing</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Experience unparalleled speed and performance that keeps you in the flow.</p>
+                  <p className="text-muted-foreground">Story-driven editing that captivates your audience from start to finish.</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -82,12 +82,12 @@ export default function Home() {
               <Card className="text-center h-full">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
-                    <Code className="h-8 w-8 text-primary" />
+                    <Palette className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">Developer Friendly</CardTitle>
+                  <CardTitle className="mt-4">Color Grading</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Easy-to-use APIs and documentation that developers will adore.</p>
+                  <p className="text-muted-foreground">Professional color correction and grading to set the perfect mood and tone.</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -95,12 +95,12 @@ export default function Home() {
               <Card className="text-center h-full">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
-                    <Rocket className="h-8 w-8 text-primary" />
+                    <PlaySquare className="h-8 w-8 text-primary" />
                   </div>
-                  <CardTitle className="mt-4">Ready to Launch</CardTitle>
+                  <CardTitle className="mt-4">Motion Graphics</CardTitle>
                 </CardHeader>
                 <CardContent>
-                  <p className="text-muted-foreground">Get started in minutes and deploy your projects with a single click.</p>
+                  <p className="text-muted-foreground">Engaging animations and titles to elevate your video's production value.</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -118,8 +118,8 @@ export default function Home() {
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold">What Our Users Say</h3>
-            <p className="text-muted-foreground mt-2">Real stories from happy customers.</p>
+            <h3 className="text-3xl md:text-4xl font-bold">What Our Clients Say</h3>
+            <p className="text-muted-foreground mt-2">Real stories from happy collaborators.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
              <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
@@ -130,8 +130,8 @@ export default function Home() {
                       <Star /><Star /><Star /><Star /><Star />
                     </div>
                   </div>
-                  <blockquote className="text-lg italic">"This app has revolutionized my workflow. I can't imagine working without it now. Highly recommended!"</blockquote>
-                  <p className="text-right font-semibold mt-4">- Alex Johnson</p>
+                  <blockquote className="text-lg italic">"The editing completely transformed our project. The attention to detail was incredible. Highly recommended!"</blockquote>
+                  <p className="text-right font-semibold mt-4">- Alex Johnson, Film Director</p>
                 </CardContent>
               </Card>
             </motion.div>
@@ -143,8 +143,8 @@ export default function Home() {
                       <Star /><Star /><Star /><Star /><Star />
                     </div>
                   </div>
-                  <blockquote className="text-lg italic">"An essential tool for any serious professional. The features are top-notch and the support is incredible."</blockquote>
-                  <p className="text-right font-semibold mt-4">- Samantha Lee</p>
+                  <blockquote className="text-lg italic">"An essential partner for our marketing videos. The quality is always top-notch and they are a pleasure to work with."</blockquote>
+                  <p className="text-right font-semibold mt-4">- Samantha Lee, Marketing Head</p>
                 </CardContent>
               </Card>
             </motion.div>

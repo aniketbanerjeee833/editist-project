@@ -7,8 +7,8 @@ import CustomCursor from '@/components/custom-cursor';
 import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
-  title: 'Glitch Launch',
-  description: 'The future of awesome is here.',
+  title: 'Glitch Launch | Professional Video Editing',
+  description: 'High-quality, professional video editing services to bring your vision to life.',
 };
 
 export default function RootLayout({
@@ -37,13 +37,13 @@ export default function RootLayout({
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
                 <h2 className="text-xl font-bold mb-2">Glitch Launch</h2>
-                <p className="text-muted-foreground text-sm">The future of awesome is here. Build faster, better, and more beautifully than ever before.</p>
+                <p className="text-muted-foreground text-sm">Professional video editing services to make your content stand out.</p>
               </div>
               <div>
-                <h3 className="font-semibold mb-4">Product</h3>
+                <h3 className="font-semibold mb-4">Explore</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><a href="#features" className="text-muted-foreground hover:text-foreground">Features</a></li>
-                  <li><a href="#testimonials" className="text-muted-foreground hover:text-foreground">Testimonials</a></li>
+                  <li><Link href="/#features" className="text-muted-foreground hover:text-foreground">Services</Link></li>
+                  <li><Link href="/projects" className="text-muted-foreground hover:text-foreground">Portfolio</Link></li>
                 </ul>
               </div>
               <div>

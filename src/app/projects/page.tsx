@@ -8,28 +8,28 @@ import { motion } from "framer-motion";
 export default function ProjectsPage() {
   const projects = [
     {
-      title: "Project Alpha",
-      description: "A revolutionary new platform for enterprise-level quantum computing.",
+      title: "Corporate Ad",
+      description: "A sleek and professional advertisement for a new tech product launch.",
       imageUrl: "https://placehold.co/600x400.png",
-      hint: "technology abstract"
+      hint: "video production"
     },
     {
-      title: "Project Beta",
-      description: "An innovative mobile app that connects local farmers with consumers.",
+      title: "Music Video",
+      description: "A vibrant and energetic music video for an up-and-coming indie artist.",
       imageUrl: "https://placehold.co/600x400.png",
-      hint: "farm mobile"
+      hint: "music video"
     },
     {
-      title: "Project Gamma",
-      description: "A web-based tool for visualizing complex data sets with stunning 3D graphics.",
+      title: "Wedding Film",
+      description: "A beautiful and cinematic wedding film capturing a couple's special day.",
       imageUrl: "https://placehold.co/600x400.png",
-      hint: "data visualization"
+      hint: "wedding film"
     },
     {
-      title: "Project Delta",
-      description: "A machine learning model to predict stock market trends with high accuracy.",
+      title: "Documentary Short",
+      description: "An impactful short documentary about local community heroes.",
       imageUrl: "https://placehold.co/600x400.png",
-      hint: "stock market"
+      hint: "documentary film"
     },
   ];
 
@@ -61,10 +61,10 @@ export default function ProjectsPage() {
           variants={sectionVariants}
         >
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-            Our Work
+            Our Portfolio
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
-            Check out some of the amazing projects we've brought to life.
+            Check out some of the stunning video projects we've brought to life.
           </p>
         </motion.div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
