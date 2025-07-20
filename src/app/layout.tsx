@@ -1,3 +1,4 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
@@ -5,7 +6,6 @@ import { Instagram, Youtube } from "lucide-react";
 import Link from 'next/link';
 import CustomCursor from '@/components/custom-cursor';
 import { Header } from '@/components/header';
-import { TimedPopup } from "@/components/timed-popup";
 
 export const metadata: Metadata = {
   title: 'Glitch Launch | Professional Video Editing Services',
@@ -104,7 +104,6 @@ export default function RootLayout({
           </div>
         </footer>
         <Toaster />
-        <TimedPopup />
       </body>
     </html>
   );
