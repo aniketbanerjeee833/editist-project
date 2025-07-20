@@ -5,6 +5,7 @@ import * as z from 'zod';
 import { Resend } from 'resend';
 import { UserReplyEmail } from './user-reply-template';
 import clientPromise from '@/lib/mongodb';
+import { headers } from 'next/headers';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -16,7 +17,7 @@ const formSchema = z.object({
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = 'Contact Form <onboarding@resend.dev>'; // This must be a domain you've verified with Resend
 
-async function saveToDatabase(data: z.infer<typeof formSchema>) {
+async function saveToDatabase(data: z.infer<typeof formSchema>, metadata: Record<string, any>) {
     if (!process.env.MONGODB_URI || !process.env.MONGODB_DB) {
         console.log("MongoDB environment variables not set. Skipping database save.");
         return;
@@ -27,6 +28,7 @@ async function saveToDatabase(data: z.infer<typeof formSchema>) {
         const collection = db.collection('contacts');
         const result = await collection.insertOne({
             ...data,
+            metadata,
             submittedAt: new Date(),
         });
         console.log(`Successfully inserted item with _id: ${result.insertedId}`);
@@ -46,12 +48,20 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       message: 'Invalid form data. Please check your entries.',
     };
   }
+  
+  const headersList = headers();
+  const metadata = {
+      ip: headersList.get('x-forwarded-for') ?? headersList.get('x-real-ip'),
+      userAgent: headersList.get('user-agent'),
+      referer: headersList.get('referer'),
+      headers: Object.fromEntries(headersList.entries()),
+  };
 
   const { name, email, subject, message } = validatedFields.data;
 
   try {
-    // Save submission to MongoDB
-    await saveToDatabase(validatedFields.data);
+    // Save submission to MongoDB with metadata
+    await saveToDatabase(validatedFields.data, metadata);
   } catch (dbError) {
       console.error("Database submission error:", dbError);
       return {
