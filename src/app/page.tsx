@@ -61,7 +61,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               >
                 <Image
-                  src="https://cdn4.iconfinder.com/data/icons/boyah-content-creator-illustrations/3000/Collaboration_with_Other_Creators-256.png"
+                  src="https://cdn0.iconfinder.com/data/icons/web-illustrations-2/600/179-512.png"
                   alt="Video editing illustration"
                   width={500}
                   height={500}
