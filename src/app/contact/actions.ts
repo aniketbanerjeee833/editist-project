@@ -4,6 +4,7 @@
 import * as z from 'zod';
 import { Resend } from 'resend';
 import { UserReplyEmail } from './user-reply-template';
+import clientPromise from '@/lib/mongodb';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -14,6 +15,27 @@ const formSchema = z.object({
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 const fromEmail = 'Contact Form <onboarding@resend.dev>'; // This must be a domain you've verified with Resend
+
+async function saveToDatabase(data: z.infer<typeof formSchema>) {
+    if (!process.env.MONGODB_URI || !process.env.MONGODB_DB) {
+        console.log("MongoDB environment variables not set. Skipping database save.");
+        return;
+    }
+    try {
+        const client = await clientPromise;
+        const db = client.db(process.env.MONGODB_DB);
+        const collection = db.collection('contacts');
+        const result = await collection.insertOne({
+            ...data,
+            submittedAt: new Date(),
+        });
+        console.log(`Successfully inserted item with _id: ${result.insertedId}`);
+    } catch (error) {
+        console.error("Failed to save to database:", error);
+        // We can re-throw the error or handle it gracefully
+        throw new Error("Could not save the form submission.");
+    }
+}
 
 export async function submitContactForm(values: z.infer<typeof formSchema>) {
   const validatedFields = formSchema.safeParse(values);
@@ -27,13 +49,16 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
 
   const { name, email, subject, message } = validatedFields.data;
 
-  // Print the form submission to the server console for debugging.
-  console.log('--- New Contact Form Submission ---');
-  console.log('Name:', name);
-  console.log('Email:', email);
-  console.log('Subject:', subject);
-  console.log('Message:', message);
-  console.log('------------------------------------');
+  try {
+    // Save submission to MongoDB
+    await saveToDatabase(validatedFields.data);
+  } catch (dbError) {
+      console.error("Database submission error:", dbError);
+      return {
+          success: false,
+          message: "We couldn't save your message right now. Please try again later.",
+      }
+  }
 
 
   if (!process.env.RESEND_API_KEY) {
@@ -46,32 +71,25 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
 
   try {
     // Send automated reply to the user
-    const { data, error } = await resend.emails.send({
+    await resend.emails.send({
         from: fromEmail,
         to: email, // Send to the user who filled the form
         subject: "We've received your message!",
         react: UserReplyEmail({ name }),
         text: `Hi ${name},\n\nThanks for reaching out! We've received your message and will get back to you as soon as possible.\n\nBest,\nThe Glitch Launch Team`
     });
-
-    if (error) {
-      console.error("Failed to send user reply email with Resend:", error);
-      return {
-        success: false,
-        message: "Sorry, we couldn't send your confirmation email. Please try again later.",
-      };
-    }
     
     return {
       success: true,
       message: "Thanks for your message! A confirmation has been sent to your email.",
     };
 
-  } catch (error) {
-    console.error("An unexpected error occurred while sending the email:", error);
+  } catch (emailError) {
+    console.error("An unexpected error occurred while sending the email:", emailError);
+    // Even if email fails, the data is saved, so we might return a partial success message
     return {
-      success: false,
-      message: "Sorry, an unexpected error occurred. Please try again later.",
+      success: true, // Data was saved, so it's a success from user's perspective
+      message: "Thanks for your message! We couldn't send a confirmation email, but we have received your submission.",
     };
   }
 }
