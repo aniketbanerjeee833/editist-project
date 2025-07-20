@@ -18,7 +18,6 @@ import { Textarea } from "@/components/ui/textarea"
 import { toast } from "@/hooks/use-toast"
 import { motion } from "framer-motion"
 import { Badge } from "@/components/ui/badge"
-import { submitContactForm } from "./actions"
 import { useState } from "react"
 import { Loader2 } from "lucide-react"
 
@@ -43,22 +42,17 @@ export default function ContactPage() {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
-    const result = await submitContactForm(values);
-    setIsSubmitting(false);
-
-    if (result.success) {
-      toast({
-        title: "Message Sent!",
-        description: result.message,
-      });
-      form.reset();
-    } else {
-      toast({
-        variant: "destructive",
-        title: "Oops! Something went wrong.",
-        description: result.message,
-      });
-    }
+    // The submission logic has been removed.
+    // We'll just simulate a delay and show a success message.
+    console.log("Form values (submission disabled):", values);
+    setTimeout(() => {
+        setIsSubmitting(false);
+        toast({
+            title: "Form Submitted!",
+            description: "This form is currently for demonstration purposes only.",
+        });
+        form.reset();
+    }, 1000)
   }
 
   const sectionVariants = {
