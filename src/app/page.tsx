@@ -56,7 +56,7 @@ export default function Home() {
         className="py-20 bg-secondary/30"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -65,7 +65,7 @@ export default function Home() {
             <p className="text-muted-foreground mt-2">Everything you need for a stunning final cut.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+            <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
               <Card className="text-center h-full">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
@@ -78,7 +78,7 @@ export default function Home() {
                 </CardContent>
               </Card>
             </motion.div>
-             <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+             <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
               <Card className="text-center h-full">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
@@ -91,7 +91,7 @@ export default function Home() {
                 </CardContent>
               </Card>
             </motion.div>
-            <motion.div custom={2} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+            <motion.div custom={2} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
               <Card className="text-center h-full">
                 <CardHeader>
                   <div className="mx-auto bg-primary/10 p-3 rounded-full w-fit">
@@ -113,7 +113,7 @@ export default function Home() {
         className="py-20"
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
+        viewport={{ once: true, amount: 0.3 }}
         variants={sectionVariants}
       >
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -122,7 +122,7 @@ export default function Home() {
             <p className="text-muted-foreground mt-2">Real stories from happy collaborators.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-             <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+             <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
               <Card className="h-full bg-secondary/30">
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-4">
@@ -135,7 +135,7 @@ export default function Home() {
                 </CardContent>
               </Card>
             </motion.div>
-             <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true }} variants={cardVariants}>
+             <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
               <Card className="h-full bg-secondary/30">
                 <CardContent className="pt-6">
                   <div className="flex items-center mb-4">
