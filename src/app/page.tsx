@@ -61,7 +61,7 @@ export default function Home() {
                 transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
               >
                 <Image
-                  src="https://png.pngtree.com/png-vector/20221012/ourmid/pngtree-video-editing-isolated-cartoon-vector-illustrations-png-image_6275875.png"
+                  src="https://cdn4.iconfinder.com/data/icons/boyah-content-creator-illustrations/3000/Collaboration_with_Other_Creators-256.png"
                   alt="Video editing illustration"
                   width={500}
                   height={500}
