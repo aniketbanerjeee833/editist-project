@@ -6,6 +6,7 @@ import { Resend } from 'resend';
 import { UserReplyEmail } from './user-reply-template';
 import clientPromise from '@/lib/mongodb';
 import { headers } from 'next/headers';
+import { analyzeContactMessage } from '@/ai/flows/analyze-contact-flow';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -50,7 +51,7 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
   }
   
   const headersList = headers();
-  const metadata = {
+  const metadata: Record<string, any> = {
       ip: headersList.get('x-forwarded-for') ?? headersList.get('x-real-ip'),
       userAgent: headersList.get('user-agent'),
       referer: headersList.get('referer'),
@@ -60,7 +61,19 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
   const { name, email, subject, message } = validatedFields.data;
 
   try {
-    // Save submission to MongoDB with metadata
+    // Run AI analysis on the message
+    const analysis = await analyzeContactMessage({ message });
+    metadata.aiAnalysis = analysis;
+  } catch (aiError) {
+    console.error("AI analysis failed:", aiError);
+    // Decide if you want to proceed without AI data or return an error
+    // For now, we'll just log it and continue
+    metadata.aiAnalysis = { error: "AI analysis failed." };
+  }
+
+
+  try {
+    // Save submission to MongoDB with metadata and AI analysis
     await saveToDatabase(validatedFields.data, metadata);
   } catch (dbError) {
       console.error("Database submission error:", dbError);
