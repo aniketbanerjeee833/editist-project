@@ -7,6 +7,7 @@ import { Film, Palette, PlaySquare, Star } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import { TimedPopup } from "@/components/timed-popup"
+import Image from "next/image"
 
 export default function Home() {
 
@@ -31,24 +32,42 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col min-h-screen pt-16">
-        <motion.section 
-          id="hero" 
-          className="text-center py-20 md:py-32"
+        <motion.section
+          id="hero"
+          className="py-20 md:py-32"
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
-              Professional Video Editing, For Your Vision
-            </h2>
-            <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto mb-8">
-              We provide high-quality, professional video editing services to bring your story to life. From corporate videos to cinematic films, we make your content shine.
-            </p>
-            <div className="flex justify-center gap-4">
-              <Button size="lg" asChild>
-                <Link href="/contact">Get in touch</Link>
-              </Button>
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="text-center md:text-left">
+                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                  Professional Video Editing, For Your Vision
+                </h2>
+                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto md:mx-0 mb-8">
+                  We provide high-quality, professional video editing services to bring your story to life. From corporate videos to cinematic films, we make your content shine.
+                </p>
+                <div className="flex justify-center md:justify-start gap-4">
+                  <Button size="lg" asChild>
+                    <Link href="/contact">Get in touch</Link>
+                  </Button>
+                </div>
+              </div>
+              <motion.div
+                className="hidden md:block"
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              >
+                <Image
+                  src="https://i.imgur.com/ODtOQ2m.png"
+                  alt="Video editing illustration"
+                  width={500}
+                  height={500}
+                  className="mx-auto"
+                />
+              </motion.div>
             </div>
           </div>
         </motion.section>
@@ -137,7 +156,7 @@ export default function Home() {
                   </CardContent>
                 </Card>
               </motion.div>
-               <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
+               <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount:0.3 }} variants={cardVariants}>
                 <Card className="h-full bg-secondary/30">
                   <CardContent className="pt-6">
                     <div className="flex items-center mb-4">
