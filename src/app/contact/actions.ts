@@ -27,13 +27,13 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
 
   const { name, email, subject, message } = validatedFields.data;
 
-  // Since we are not sending the email to the site owner anymore,
-  // we can just log the form submission on the server for debugging or records.
-  console.log('Received new contact form submission (not emailed to owner):');
+  // Print the form submission to the server console for debugging.
+  console.log('--- New Contact Form Submission ---');
   console.log('Name:', name);
   console.log('Email:', email);
   console.log('Subject:', subject);
   console.log('Message:', message);
+  console.log('------------------------------------');
 
 
   if (!process.env.RESEND_API_KEY) {
