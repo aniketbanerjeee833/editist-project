@@ -1,5 +1,5 @@
 
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { Instagram, Youtube } from "lucide-react";
@@ -48,6 +48,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://glitchlaunch.com', // Replace with your actual domain
   },
+};
+
+export const viewport: Viewport = {
   themeColor: '#111827',
 };
 
