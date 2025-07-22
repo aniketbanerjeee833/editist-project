@@ -198,11 +198,6 @@ export default function Home() {
                     <div className="p-1 h-full">
                       <Card className="h-full flex flex-col bg-gradient-to-br from-secondary/30 via-secondary/20 to-secondary/30 border-primary/20">
                         <CardContent className="pt-6 flex flex-col items-start gap-4 flex-grow">
-                          <div className="flex items-center gap-2">
-                              {[...Array(5)].map((_, i) => (
-                                <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
-                              ))}
-                            </div>
                           <blockquote className="text-left text-foreground/90 text-lg flex-grow">
                           "{testimonial.quote}"
                           </blockquote>
