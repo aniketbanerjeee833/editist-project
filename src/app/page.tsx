@@ -1,4 +1,3 @@
-
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -15,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel"
+import { Badge } from "@/components/ui/badge"
 
 const testimonials = [
   {
@@ -179,34 +179,84 @@ export default function Home() {
         >
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h3 className="text-3xl md:text-4xl font-bold">What Our Clients Say</h3>
-              <p className="text-muted-foreground mt-2">Real stories from happy collaborators.</p>
+              <Badge variant="outline" className="mb-4">TESTIMONIALS</Badge>
+              <h3 className="text-3xl md:text-4xl font-bold">Don't take our word for it!</h3>
+              <p className="text-muted-foreground mt-2 max-w-2xl mx-auto">Hear it from our partners who have experienced our service first-hand.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            <Carousel
+              opts={{
+                align: "start",
+                loop: true,
+              }}
+              className="w-full"
+            >
+              <CarouselContent>
                 {testimonials.map((testimonial, index) => (
-                    <Card key={index} className="bg-secondary/30 border-border/50">
-                    <CardContent className="pt-6 flex flex-col">
-                        <div className="flex items-center mb-4">
-                        <Image
-                            src={testimonial.avatar}
-                            alt={testimonial.name}
-                            width={40}
-                            height={40}
-                            className="rounded-full"
-                            draggable="false"
-                        />
-                        <div className="ml-4">
-                            <p className="font-semibold">{testimonial.name}</p>
+                  <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <Card className="h-full bg-secondary/30">
+                        <CardContent className="pt-6 flex flex-col items-start gap-4">
+                          <Image
+                              src={testimonial.avatar}
+                              alt={testimonial.name}
+                              width={48}
+                              height={48}
+                              className="rounded-full"
+                              draggable="false"
+                          />
+                          <blockquote className="text-left text-foreground/90">
+                          "{testimonial.quote}"
+                          </blockquote>
+                          <div className="mt-auto">
+                            <p className="font-semibold text-lg" style={{fontFamily: "'Space Grotesk', sans-serif"}}>{testimonial.name}</p>
                             <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                        </div>
-                        </div>
-                        <blockquote className="text-lg italic text-foreground/90 border-l-2 pl-4 border-primary/20">
-                        {testimonial.quote}
-                        </blockquote>
-                    </CardContent>
-                    </Card>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
                 ))}
-            </div>
+                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
+                    <div className="p-1">
+                      <Card className="h-full bg-secondary/30 overflow-hidden">
+                        <CardContent className="p-0 flex flex-col items-start gap-4 relative">
+                          <Image
+                            src="https://i.imgur.com/gC51m4A.png"
+                            alt="Video testimonial"
+                            width={500}
+                            height={500}
+                            className="w-full h-full object-cover"
+                            draggable="false"
+                          />
+                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <Button variant="ghost" size="icon" className="w-16 h-16 bg-white/20 hover:bg-white/30 rounded-full backdrop-blur-sm">
+                              <PlaySquare className="w-8 h-8 text-white" />
+                            </Button>
+                          </div>
+                           <div className="absolute bottom-0 left-0 p-6">
+                            <p className="font-semibold text-white text-lg" style={{fontFamily: "'Space Grotesk', sans-serif"}}>Pri Patat</p>
+                            <p className="text-sm text-white/80">Product Designer at Lightdash</p>
+                          </div>
+                           <div className="absolute top-4 right-4">
+                            <Image
+                                src="https://placehold.co/100x100.png"
+                                alt="Pri Patat"
+                                width={40}
+                                height={40}
+                                className="rounded-full border-2 border-white/50"
+                                draggable="false"
+                            />
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+                  </CarouselItem>
+              </CarouselContent>
+              <CarouselPrevious className="hidden md:flex" />
+              <CarouselNext className="hidden md:flex" />
+            </Carousel>
           </div>
         </motion.section>
       </div>
@@ -214,4 +264,3 @@ export default function Home() {
     </>
   )
 }
-
