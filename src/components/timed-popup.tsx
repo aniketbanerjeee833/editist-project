@@ -13,7 +13,7 @@ import {
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { POPUP_DELAY_SECONDS } from "@/config";
-import { Hand, MessageSquare } from "lucide-react";
+import { ArrowRight, MessageSquare } from "lucide-react";
 
 const POPUP_DISMISSED_KEY = "popupDismissed";
 
@@ -48,25 +48,24 @@ export function TimedPopup() {
 
   return (
     <Dialog open={isOpen} onOpenChange={handleOpenChange}>
-      <DialogContent className="sm:max-w-[425px]">
-        <DialogHeader>
-          <DialogTitle className="flex items-center gap-2">
-            <Hand className="h-6 w-6 text-primary" />
-            <span>Thinking About a Project?</span>
+      <DialogContent className="sm:max-w-lg p-10 text-center">
+        <DialogHeader className="space-y-4">
+          <DialogTitle className="text-3xl font-extrabold tracking-tight">
+            Let's Build Something Great Together
           </DialogTitle>
-          <DialogDescription>
-            You've been here for a little while. Have a question or an idea you'd like to discuss? We're here to help bring it to life.
+          <DialogDescription className="text-lg text-muted-foreground">
+            Have a project in mind? We'd love to hear about it. Reach out and let's start the conversation.
           </DialogDescription>
         </DialogHeader>
-        <DialogFooter>
-          <Button variant="outline" onClick={() => handleOpenChange(false)}>Maybe Later</Button>
-          <Button asChild>
-            <Link href="/contact">
-              <MessageSquare className="mr-2 h-4 w-4" />
-              Let's Talk
-            </Link>
-          </Button>
-        </DialogFooter>
+        <div className="mt-6 flex justify-center gap-4">
+            <Button variant="outline" onClick={() => handleOpenChange(false)}>Maybe Later</Button>
+            <Button size="lg" asChild>
+                <Link href="/contact">
+                Get in Touch
+                <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+            </Button>
+        </div>
       </DialogContent>
     </Dialog>
   );
