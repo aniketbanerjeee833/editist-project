@@ -66,6 +66,7 @@ export default function Home() {
                   width={500}
                   height={500}
                   className="mx-auto"
+                  draggable="false"
                 />
               </motion.div>
             </div>

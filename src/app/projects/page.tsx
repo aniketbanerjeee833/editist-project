@@ -107,6 +107,7 @@ export default function ProjectsPage() {
                             height={400}
                             className="w-full h-full object-cover"
                             data-ai-hint={project.hint}
+                            draggable="false"
                         />
                         <div className="absolute inset-0 flex items-center justify-center bg-black/40">
                             <PlayCircle className="w-20 h-20 text-white/80 hover:text-white transition-colors" />
@@ -128,6 +129,7 @@ export default function ProjectsPage() {
                       height={400}
                       className="w-full h-auto object-cover"
                       data-ai-hint={project.hint}
+                      draggable="false"
                     />
                   )}
                 </CardHeader>
@@ -148,4 +150,3 @@ export default function ProjectsPage() {
     </section>
   );
 }
-
