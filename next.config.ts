@@ -40,6 +40,12 @@ const nextConfig: NextConfig = {
         hostname: 'cdn0.iconfinder.com',
         port: '',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'img.youtube.com',
+        port: '',
+        pathname: '/**',
       }
     ],
   },
