@@ -182,60 +182,31 @@ export default function Home() {
               <h3 className="text-3xl md:text-4xl font-bold">What Our Clients Say</h3>
               <p className="text-muted-foreground mt-2">Real stories from happy collaborators.</p>
             </div>
-            <div className="relative">
-              <div className="h-[400px] overflow-hidden">
-                <div className="animate-scroll-vertical">
-                  {testimonials.map((testimonial, index) => (
-                     <Card key={index} className="mb-8 bg-secondary/30 border-border/50">
-                      <CardContent className="pt-6">
-                         <p className="text-6xl text-primary/50 -mb-2">“</p>
-                        <blockquote className="text-lg italic text-foreground/90">
-                          {testimonial.quote}
-                        </blockquote>
-                        <div className="mt-4 flex items-center">
-                           <Image
-                            src={testimonial.avatar}
-                            alt={testimonial.name}
-                            width={40}
-                            height={40}
-                            className="rounded-full"
-                            draggable="false"
-                          />
-                          <div className="ml-4">
-                            <p className="font-semibold">{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  ))}
-                  {/* Duplicate testimonials for seamless scroll */}
-                  {testimonials.map((testimonial, index) => (
-                    <Card key={`clone-${index}`} className="mb-8 bg-secondary/30 border-border/50">
-                      <CardContent className="pt-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {testimonials.map((testimonial, index) => (
+                    <Card key={index} className="bg-secondary/30 border-border/50">
+                    <CardContent className="pt-6">
                         <p className="text-6xl text-primary/50 -mb-2">“</p>
                         <blockquote className="text-lg italic text-foreground/90">
-                          {testimonial.quote}
+                        {testimonial.quote}
                         </blockquote>
                         <div className="mt-4 flex items-center">
-                          <Image
+                        <Image
                             src={testimonial.avatar}
                             alt={testimonial.name}
                             width={40}
                             height={40}
                             className="rounded-full"
                             draggable="false"
-                          />
-                          <div className="ml-4">
+                        />
+                        <div className="ml-4">
                             <p className="font-semibold">{testimonial.name}</p>
                             <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                          </div>
                         </div>
-                      </CardContent>
+                        </div>
+                    </CardContent>
                     </Card>
-                  ))}
-                </div>
-              </div>
+                ))}
             </div>
           </div>
         </motion.section>

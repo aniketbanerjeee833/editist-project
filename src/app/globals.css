@@ -109,18 +109,3 @@
   height: 60px;
   background-color: hsla(var(--primary) / 0.5);
 }
-
-@layer utilities {
-  @keyframes scroll-vertical {
-    from {
-      transform: translateY(0);
-    }
-    to {
-      transform: translateY(-50%);
-    }
-  }
-
-  .animate-scroll-vertical {
-    animation: scroll-vertical 40s linear infinite;
-  }
-}
