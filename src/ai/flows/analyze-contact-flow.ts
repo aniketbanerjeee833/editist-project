@@ -37,7 +37,7 @@ const prompt = ai.definePrompt({
   name: 'analyzeContactMessagePrompt',
   input: {schema: AnalyzeContactMessageInputSchema},
   output: {schema: AnalyzeContactMessageOutputSchema},
-  prompt: `You are a helpful assistant that analyzes incoming contact form submissions for a video editing company called Glitch Launch. Your task is to categorize the message, determine its sentiment, assess its urgency, and provide a concise summary.
+  prompt: `You are a helpful assistant that analyzes incoming contact form submissions for a video editing company called Editist. Your task is to categorize the message, determine its sentiment, assess its urgency, and provide a concise summary.
 
 Analyze the following message:
 

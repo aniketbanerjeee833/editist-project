@@ -75,8 +75,8 @@ export default function ContactPage() {
           </h2>
           <p className="text-lg text-muted-foreground">
             Or just reach out manually to{" "}
-            <a href="mailto:hello@glitchlaunch.com" className="text-primary underline">
-              hello@glitchlaunch.com
+            <a href="mailto:hello@editist.com" className="text-primary underline">
+              hello@editist.com
             </a>
           </p>
         </motion.div>

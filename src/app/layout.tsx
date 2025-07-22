@@ -8,21 +8,21 @@ import CustomCursor from '@/components/custom-cursor';
 import { Header } from '@/components/header';
 
 export const metadata: Metadata = {
-  title: 'Glitch Launch | Professional Video Editing Services',
+  title: 'Editist | Professional Video Editing Services',
   description: 'High-quality, professional video editing services to bring your vision to life. We specialize in cinematic editing, color grading, and motion graphics.',
   keywords: ['video editing', 'professional video editing', 'cinematic editing', 'color grading', 'motion graphics', 'post-production', 'video services'],
-  authors: [{ name: 'Glitch Launch' }],
+  authors: [{ name: 'Editist' }],
   openGraph: {
-    title: 'Glitch Launch | Professional Video Editing Services',
+    title: 'Editist | Professional Video Editing Services',
     description: 'High-quality, professional video editing services to bring your vision to life.',
-    url: 'https://glitchlaunch.com', // Replace with your actual domain
-    siteName: 'Glitch Launch',
+    url: 'https://editist.com', // Replace with your actual domain
+    siteName: 'Editist',
     images: [
       {
-        url: 'https://glitchlaunch.com/og-image.png', // Replace with your actual OG image URL
+        url: 'https://editist.com/og-image.png', // Replace with your actual OG image URL
         width: 1200,
         height: 630,
-        alt: 'Glitch Launch Video Editing Services',
+        alt: 'Editist Video Editing Services',
       },
     ],
     locale: 'en_US',
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Glitch Launch | Professional Video Editing Services',
+    title: 'Editist | Professional Video Editing Services',
     description: 'High-quality, professional video editing services to bring your vision to life.',
-    images: ['https://glitchlaunch.com/twitter-image.png'], // Replace with your actual Twitter image URL
+    images: ['https://editist.com/twitter-image.png'], // Replace with your actual Twitter image URL
   },
   robots: {
     index: true,
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     },
   },
   alternates: {
-    canonical: 'https://glitchlaunch.com', // Replace with your actual domain
+    canonical: 'https://editist.com', // Replace with your actual domain
   },
 };
 
@@ -79,7 +79,7 @@ export default function RootLayout({
           <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
-                <h2 className="text-xl font-bold mb-2">Glitch Launch</h2>
+                <h2 className="text-xl font-bold mb-2">Editist</h2>
                 <p className="text-muted-foreground text-sm">Professional video editing services to make your content stand out.</p>
               </div>
               <div>
@@ -98,7 +98,7 @@ export default function RootLayout({
               </div>
             </div>
             <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row justify-between items-center">
-              <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Glitch Launch. All rights reserved.</p>
+              <p className="text-sm text-muted-foreground">&copy; {new Date().getFullYear()} Editist. All rights reserved.</p>
               <div className="flex gap-4 mt-4 sm:mt-0">
                 <a href="#" className="text-muted-foreground hover:text-foreground"><Instagram className="h-5 w-5" /></a>
                 <a href="#" className="text-muted-foreground hover:text-foreground"><Youtube className="h-5 w-5" /></a>

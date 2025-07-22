@@ -99,7 +99,7 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
         to: email, // Send to the user who filled the form
         subject: "We've received your message!",
         react: UserReplyEmail({ name }),
-        text: `Hi ${name},\n\nThanks for reaching out! We've received your message and will get back to you as soon as possible.\n\nBest,\nThe Glitch Launch Team`
+        text: `Hi ${name},\n\nThanks for reaching out! We've received your message and will get back to you as soon as possible.\n\nBest,\nThe Editist Team`
     });
     
     return {

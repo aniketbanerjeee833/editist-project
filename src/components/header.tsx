@@ -55,7 +55,7 @@ export function Header() {
           transition={{ duration: 0.5 }}
         >
           <Link href="/" className="text-2xl font-bold text-primary">
-            Glitch Launch
+            Editist
           </Link>
         </motion.div>
 
@@ -87,7 +87,7 @@ export function Header() {
                 <SheetHeader className="flex flex-row justify-between items-center">
                     <SheetTitle asChild>
                       <Link href="/" className="text-2xl font-bold text-primary" onClick={handleLinkClick}>
-                        Glitch Launch
+                        Editist
                       </Link>
                     </SheetTitle>
                     <SheetClose asChild>
