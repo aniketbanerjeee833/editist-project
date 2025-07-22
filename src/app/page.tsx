@@ -198,10 +198,7 @@ export default function Home() {
                     <div className="p-1 h-full">
                       <Card className="h-full flex flex-col bg-gradient-to-br from-secondary/30 via-secondary/20 to-secondary/30 border-primary/20">
                         <CardContent className="pt-6 flex flex-col items-start gap-4 flex-grow">
-                          <blockquote className="text-left text-foreground/90 text-lg flex-grow">
-                          "{testimonial.quote}"
-                          </blockquote>
-                          <div className="flex items-center gap-4 mt-auto w-full">
+                          <div className="flex items-center gap-4 w-full">
                             <Image
                                 src={testimonial.avatar}
                                 alt={testimonial.name}
@@ -215,6 +212,9 @@ export default function Home() {
                                 <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                             </div>
                            </div>
+                          <blockquote className="text-left text-foreground/90 text-lg flex-grow pt-4">
+                          "{testimonial.quote}"
+                          </blockquote>
                         </CardContent>
                       </Card>
                     </div>
