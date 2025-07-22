@@ -90,7 +90,7 @@ export default function ProjectsPage() {
                   />
                 </CardHeader>
                 <CardContent className="p-6">
-                  <CardTitle className="text-2xl mb-2">{project.title}</CardTitle>
+                  <CardTitle className="text-2xl mb-2 text-center">{project.title}</CardTitle>
                   <CardDescription className="text-muted-foreground mb-4">{project.description}</CardDescription>
                   <Button variant="outline">View Project</Button>
                 </CardContent>
