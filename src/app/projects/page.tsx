@@ -79,7 +79,7 @@ export default function ProjectsPage() {
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
             >
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col bg-gradient-to-br from-card to-secondary/30">
                 <CardHeader className="p-0">
                   <Image
                     src={project.imageUrl}
