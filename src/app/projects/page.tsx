@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { ChevronRight } from "lucide-react";
 
 export default function ProjectsPage() {
   const projects = [
@@ -78,7 +79,7 @@ export default function ProjectsPage() {
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
             >
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full">
+              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
                 <CardHeader className="p-0">
                   <Image
                     src={project.imageUrl}
@@ -89,10 +90,14 @@ export default function ProjectsPage() {
                     data-ai-hint={project.hint}
                   />
                 </CardHeader>
-                <CardContent className="p-6">
-                  <CardTitle className="text-2xl mb-2 text-center">{project.title}</CardTitle>
-                  
-                  <Button variant="outline">View Project</Button>
+                <CardContent className="p-6 flex flex-col flex-grow items-center">
+                  <CardTitle className="text-2xl mb-4 text-center">{project.title}</CardTitle>
+                  <div className="mt-auto">
+                    <Button>
+                      View Project
+                      <ChevronRight className="h-4 w-4" />
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             </motion.div>
