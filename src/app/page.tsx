@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Button } from "@/components/ui/button"
@@ -194,24 +195,31 @@ export default function Home() {
               <CarouselContent>
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <Card className="h-full bg-secondary/30">
-                        <CardContent className="pt-6 flex flex-col items-start gap-4">
-                          <Image
-                              src={testimonial.avatar}
-                              alt={testimonial.name}
-                              width={48}
-                              height={48}
-                              className="rounded-full"
-                              draggable="false"
-                          />
-                          <blockquote className="text-left text-foreground/90">
+                    <div className="p-1 h-full">
+                      <Card className="h-full flex flex-col bg-gradient-to-br from-secondary/30 via-secondary/20 to-secondary/30 border-primary/20">
+                        <CardContent className="pt-6 flex flex-col items-start gap-4 flex-grow">
+                          <div className="flex items-center gap-2">
+                              {[...Array(5)].map((_, i) => (
+                                <Star key={i} className="w-5 h-5 text-yellow-400 fill-yellow-400" />
+                              ))}
+                            </div>
+                          <blockquote className="text-left text-foreground/90 text-lg flex-grow">
                           "{testimonial.quote}"
                           </blockquote>
-                          <div className="mt-auto">
-                            <p className="font-semibold text-lg" style={{fontFamily: "'Space Grotesk', sans-serif"}}>{testimonial.name}</p>
-                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
-                          </div>
+                          <div className="flex items-center gap-4 mt-auto w-full">
+                            <Image
+                                src={testimonial.avatar}
+                                alt={testimonial.name}
+                                width={48}
+                                height={48}
+                                className="rounded-full"
+                                draggable="false"
+                            />
+                            <div>
+                                <p className="font-semibold text-base" style={{fontFamily: "'Space Grotesk', sans-serif"}}>{testimonial.name}</p>
+                                <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                            </div>
+                           </div>
                         </CardContent>
                       </Card>
                     </div>
