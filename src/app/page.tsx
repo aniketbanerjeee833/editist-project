@@ -185,12 +185,8 @@ export default function Home() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {testimonials.map((testimonial, index) => (
                     <Card key={index} className="bg-secondary/30 border-border/50">
-                    <CardContent className="pt-6">
-                        <p className="text-6xl text-primary/50 -mb-2">“</p>
-                        <blockquote className="text-lg italic text-foreground/90">
-                        {testimonial.quote}
-                        </blockquote>
-                        <div className="mt-4 flex items-center">
+                    <CardContent className="pt-6 flex flex-col">
+                        <div className="flex items-center mb-4">
                         <Image
                             src={testimonial.avatar}
                             alt={testimonial.name}
@@ -204,6 +200,9 @@ export default function Home() {
                             <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                         </div>
                         </div>
+                        <blockquote className="text-lg italic text-foreground/90 border-l-2 pl-4 border-primary/20">
+                        {testimonial.quote}
+                        </blockquote>
                     </CardContent>
                     </Card>
                 ))}
@@ -215,3 +214,4 @@ export default function Home() {
     </>
   )
 }
+
