@@ -164,6 +164,10 @@ export default function Home() {
             </div>
           </div>
         </motion.section>
+        
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-border to-transparent"></div>
+        </div>
 
         <motion.section
           id="testimonials"
@@ -195,6 +199,7 @@ export default function Home() {
                             width={40}
                             height={40}
                             className="rounded-full"
+                            draggable="false"
                           />
                           <div className="ml-4">
                             <p className="font-semibold">{testimonial.name}</p>
@@ -219,6 +224,7 @@ export default function Home() {
                             width={40}
                             height={40}
                             className="rounded-full"
+                            draggable="false"
                           />
                           <div className="ml-4">
                             <p className="font-semibold">{testimonial.name}</p>
