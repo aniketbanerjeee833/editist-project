@@ -8,6 +8,41 @@ import Link from "next/link"
 import { motion } from "framer-motion"
 import { TimedPopup } from "@/components/timed-popup"
 import Image from "next/image"
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from "@/components/ui/carousel"
+
+const testimonials = [
+  {
+    quote: "Their team's artistic flair and strategic approach resulted in remarkable campaigns - a reliable creative partner.",
+    name: "Alex Johnson",
+    title: "Film Director",
+    avatar: "https://placehold.co/100x100.png"
+  },
+  {
+    quote: "An essential partner for our marketing videos. The quality is always top-notch and they are a pleasure to work with.",
+    name: "Samantha Lee",
+    title: "Marketing Head",
+    avatar: "https://placehold.co/100x100.png"
+  },
+  {
+    quote: "The editing completely transformed our project. The attention to detail was incredible. Highly recommended!",
+    name: "Michael Chen",
+    title: "YouTuber",
+    avatar: "https://placehold.co/100x100.png"
+  },
+    {
+    quote: "Working with them was a breeze. They understood our vision perfectly and delivered beyond our expectations.",
+    name: "Emily Rodriguez",
+    title: "Startup Founder",
+    avatar: "https://placehold.co/100x100.png"
+  },
+];
+
 
 export default function Home() {
 
@@ -130,8 +165,8 @@ export default function Home() {
           </div>
         </motion.section>
 
-        <motion.section 
-          id="testimonials" 
+        <motion.section
+          id="testimonials"
           className="py-20"
           initial="hidden"
           whileInView="visible"
@@ -143,33 +178,58 @@ export default function Home() {
               <h3 className="text-3xl md:text-4xl font-bold">What Our Clients Say</h3>
               <p className="text-muted-foreground mt-2">Real stories from happy collaborators.</p>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-               <motion.div custom={0} initial="hidden" whileInView="visible" viewport={{ once: true, amount: 0.3 }} variants={cardVariants}>
-                <Card className="h-full bg-secondary/30">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center mb-4">
-                      <div className="flex text-yellow-400">
-                        <Star /><Star /><Star /><Star /><Star />
-                      </div>
-                    </div>
-                    <blockquote className="text-lg italic">"The editing completely transformed our project. The attention to detail was incredible. Highly recommended!"</blockquote>
-                    <p className="text-right font-semibold mt-4">- Alex Johnson, Film Director</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
-               <motion.div custom={1} initial="hidden" whileInView="visible" viewport={{ once: true, amount:0.3 }} variants={cardVariants}>
-                <Card className="h-full bg-secondary/30">
-                  <CardContent className="pt-6">
-                    <div className="flex items-center mb-4">
-                      <div className="flex text-yellow-400">
-                        <Star /><Star /><Star /><Star /><Star />
-                      </div>
-                    </div>
-                    <blockquote className="text-lg italic">"An essential partner for our marketing videos. The quality is always top-notch and they are a pleasure to work with."</blockquote>
-                    <p className="text-right font-semibold mt-4">- Samantha Lee, Marketing Head</p>
-                  </CardContent>
-                </Card>
-              </motion.div>
+            <div className="relative">
+              <div className="h-[400px] overflow-hidden">
+                <div className="animate-scroll-vertical">
+                  {testimonials.map((testimonial, index) => (
+                     <Card key={index} className="mb-8 bg-secondary/30 border-border/50">
+                      <CardContent className="pt-6">
+                         <p className="text-6xl text-primary/50 -mb-2">“</p>
+                        <blockquote className="text-lg italic text-foreground/90">
+                          {testimonial.quote}
+                        </blockquote>
+                        <div className="mt-4 flex items-center">
+                           <Image
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                          />
+                          <div className="ml-4">
+                            <p className="font-semibold">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                  {/* Duplicate testimonials for seamless scroll */}
+                  {testimonials.map((testimonial, index) => (
+                    <Card key={`clone-${index}`} className="mb-8 bg-secondary/30 border-border/50">
+                      <CardContent className="pt-6">
+                        <p className="text-6xl text-primary/50 -mb-2">“</p>
+                        <blockquote className="text-lg italic text-foreground/90">
+                          {testimonial.quote}
+                        </blockquote>
+                        <div className="mt-4 flex items-center">
+                          <Image
+                            src={testimonial.avatar}
+                            alt={testimonial.name}
+                            width={40}
+                            height={40}
+                            className="rounded-full"
+                          />
+                          <div className="ml-4">
+                            <p className="font-semibold">{testimonial.name}</p>
+                            <p className="text-sm text-muted-foreground">{testimonial.title}</p>
+                          </div>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  ))}
+                </div>
+              </div>
             </div>
           </div>
         </motion.section>
