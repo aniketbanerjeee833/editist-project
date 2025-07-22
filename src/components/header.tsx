@@ -6,7 +6,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { Sheet, SheetContent, SheetTrigger, SheetClose } from "@/components/ui/sheet";
+import { Sheet, SheetContent, SheetTrigger, SheetClose, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 
 const navLinks = [
   { href: "/", label: "Home" },
@@ -60,6 +60,9 @@ export function Header() {
               </Button>
             </SheetTrigger>
             <SheetContent side="right" className="w-[280px]">
+               <SheetHeader className="p-6 pb-0">
+                  <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
+               </SheetHeader>
               <div className="flex flex-col h-full">
                 <div className="p-6">
                    <Link href="/" className="text-2xl font-bold text-primary" onClick={handleLinkClick}>
