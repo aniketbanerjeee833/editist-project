@@ -80,7 +80,7 @@ export default function RootLayout({
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
               <div className="col-span-1 md:col-span-2">
                 <h2 className="text-xl font-bold mb-2">Editist</h2>
-                <p className="text-muted-foreground text-sm">Professional video editing services to make your content stand out.</p>
+                <p className="text-muted-foreground text-sm">High-quality, professional video editing services to bring your vision to life. We specialize in cinematic editing, color grading, and motion graphics to make your content stand out.</p>
               </div>
               <div>
                 <h3 className="font-semibold mb-4">Explore</h3>
