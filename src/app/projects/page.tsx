@@ -46,9 +46,10 @@ export default function ProjectsPage() {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.2,
-        duration: 0.6,
-        ease: "easeOut",
+        type: "spring",
+        damping: 15,
+        stiffness: 100,
+        delay: i * 0.1,
       },
     }),
   };
