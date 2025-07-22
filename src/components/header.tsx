@@ -59,25 +59,25 @@ export function Header() {
                 <span className="sr-only">Open menu</span>
               </Button>
             </SheetTrigger>
-            <SheetContent side="right" className="w-[280px]">
+            <SheetContent side="right" className="w-[280px] p-0 flex flex-col">
                <SheetHeader className="p-6 pb-0">
                   <SheetTitle className="sr-only">Navigation Menu</SheetTitle>
                </SheetHeader>
               <div className="flex flex-col h-full">
-                <div className="p-6">
+                <div className="p-6 border-b border-border">
                    <Link href="/" className="text-2xl font-bold text-primary" onClick={handleLinkClick}>
                       Glitch Launch
                     </Link>
                 </div>
 
-                <nav className="flex-grow flex flex-col justify-center">
+                <nav className="flex-grow flex flex-col justify-center p-6">
                   <ul className="space-y-4">
                     {navLinks.map((link) => (
                       <li key={link.href}>
                          <SheetClose asChild>
                           <Link
                             href={link.href}
-                            className="text-2xl font-medium text-center block py-4 hover:text-primary transition-colors duration-300"
+                            className="text-2xl font-medium text-center block py-4 rounded-lg hover:bg-primary/10 hover:text-primary transition-colors duration-300"
                             onClick={handleLinkClick}
                           >
                             {link.label}
@@ -87,7 +87,7 @@ export function Header() {
                     ))}
                   </ul>
                 </nav>
-                <div className="p-6 mt-auto text-center text-sm text-muted-foreground">
+                <div className="p-6 mt-auto text-center text-sm text-muted-foreground border-t border-border">
                     &copy; {new Date().getFullYear()} Glitch Launch
                 </div>
               </div>
