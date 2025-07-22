@@ -75,7 +75,7 @@ export default function Home() {
 
         <motion.section 
           id="features" 
-          className="py-20 bg-secondary/30"
+          className="py-20 bg-gradient-to-b from-background via-secondary/20 to-background"
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
