@@ -11,25 +11,21 @@ export default function ProjectsPage() {
   const projects = [
     {
       title: "Corporate Ad",
-      description: "A sleek and professional advertisement for a new tech product launch.",
-      imageUrl: "https://placehold.co/600x400.png",
+      videoUrl: "https://www.youtube.com/embed/gtF8D8OQDQA",
       hint: "video production"
     },
     {
       title: "Music Video",
-      description: "A vibrant and energetic music video for an up-and-coming indie artist.",
       imageUrl: "https://placehold.co/600x400.png",
       hint: "music video"
     },
     {
       title: "Wedding Film",
-      description: "A beautiful and cinematic wedding film capturing a couple's special day.",
       imageUrl: "https://placehold.co/600x400.png",
       hint: "wedding film"
     },
     {
       title: "Documentary Short",
-      description: "An impactful short documentary about local community heroes.",
       imageUrl: "https://placehold.co/600x400.png",
       hint: "documentary film"
     },
@@ -81,15 +77,25 @@ export default function ProjectsPage() {
               variants={cardVariants}
             >
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col bg-gradient-to-br from-card to-secondary/30">
-                <CardHeader className="p-0">
-                  <Image
-                    src={project.imageUrl}
-                    alt={project.title}
-                    width={600}
-                    height={400}
-                    className="w-full h-auto object-cover"
-                    data-ai-hint={project.hint}
-                  />
+                <CardHeader className="p-0 aspect-video">
+                  {project.videoUrl ? (
+                    <iframe
+                      src={project.videoUrl}
+                      title={project.title}
+                      className="w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    ></iframe>
+                  ) : project.imageUrl && (
+                    <Image
+                      src={project.imageUrl}
+                      alt={project.title}
+                      width={600}
+                      height={400}
+                      className="w-full h-auto object-cover"
+                      data-ai-hint={project.hint}
+                    />
+                  )}
                 </CardHeader>
                 <CardContent className="p-6 flex flex-col flex-grow items-center">
                   <CardTitle className="text-2xl mb-4 text-center">{project.title}</CardTitle>
