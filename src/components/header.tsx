@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { Menu, X } from "lucide-react";
@@ -20,6 +20,30 @@ export function Header() {
   // Close sheet on navigation
   const handleLinkClick = () => {
     setIsOpen(false);
+  };
+
+  const menuVariants = {
+    closed: {
+      opacity: 0,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1,
+        when: "afterChildren",
+      },
+    },
+    open: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        staggerDirection: 1,
+        when: "beforeChildren",
+      },
+    },
+  };
+
+  const linkVariants = {
+    closed: { opacity: 0, y: 20 },
+    open: { opacity: 1, y: 0 },
   };
 
   return (
@@ -49,6 +73,51 @@ export function Header() {
             </motion.div>
           ))}
         </nav>
+
+        {/* Mobile Navigation */}
+        <div className="md:hidden">
+          <Sheet open={isOpen} onOpenChange={setIsOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu />
+                <span className="sr-only">Open Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="right" className="w-full bg-background/95 backdrop-blur-sm border-0 flex flex-col">
+                <SheetHeader className="flex flex-row justify-between items-center">
+                    <SheetTitle asChild>
+                      <Link href="/" className="text-2xl font-bold text-primary" onClick={handleLinkClick}>
+                        Glitch Launch
+                      </Link>
+                    </SheetTitle>
+                    <SheetClose asChild>
+                      <Button variant="ghost" size="icon">
+                        <X />
+                        <span className="sr-only">Close Menu</span>
+                      </Button>
+                    </SheetClose>
+                </SheetHeader>
+                <motion.div
+                  className="flex flex-col items-center justify-center flex-1 gap-8"
+                  variants={menuVariants}
+                  initial="closed"
+                  animate={isOpen ? "open" : "closed"}
+                >
+                  {navLinks.map((link) => (
+                    <motion.div key={link.href} variants={linkVariants}>
+                       <Link
+                          href={link.href}
+                          className="text-3xl font-semibold text-foreground transition-colors hover:text-primary"
+                          onClick={handleLinkClick}
+                        >
+                          {link.label}
+                        </Link>
+                    </motion.div>
+                  ))}
+                </motion.div>
+            </SheetContent>
+          </Sheet>
+        </div>
       </div>
     </header>
   );
