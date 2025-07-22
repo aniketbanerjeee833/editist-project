@@ -5,10 +5,20 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { motion } from "framer-motion";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, PlayCircle } from "lucide-react";
+import { useState } from 'react';
+
+type Project = {
+  title: string;
+  videoUrl?: string;
+  imageUrl?: string;
+  hint: string;
+};
 
 export default function ProjectsPage() {
-  const projects = [
+  const [playingProject, setPlayingProject] = useState<string | null>(null);
+
+  const projects: Project[] = [
     {
       title: "Corporate Ad",
       videoUrl: "https://www.youtube.com/embed/gtF8D8OQDQA",
@@ -50,6 +60,16 @@ export default function ProjectsPage() {
     }),
   };
 
+  const handlePlayClick = (title: string) => {
+    setPlayingProject(title);
+  };
+  
+  const getYouTubeThumbnail = (videoUrl: string) => {
+    const videoId = videoUrl.split('/').pop()?.split('?')[0];
+    return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
+  };
+
+
   return (
     <section className="py-20 md:py-32 pt-16">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -69,7 +89,7 @@ export default function ProjectsPage() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
           {projects.map((project, index) => (
             <motion.div
-              key={index}
+              key={project.title}
               custom={index}
               initial="hidden"
               whileInView="visible"
@@ -77,10 +97,24 @@ export default function ProjectsPage() {
               variants={cardVariants}
             >
               <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col bg-gradient-to-br from-card to-secondary/30">
-                <CardHeader className="p-0 aspect-video">
-                  {project.videoUrl ? (
+                <CardHeader className="p-0 aspect-video relative">
+                  {project.videoUrl && playingProject !== project.title ? (
+                     <div className="relative w-full h-full cursor-pointer" onClick={() => handlePlayClick(project.title)}>
+                        <Image
+                            src={getYouTubeThumbnail(project.videoUrl)}
+                            alt={project.title}
+                            width={600}
+                            height={400}
+                            className="w-full h-full object-cover"
+                            data-ai-hint={project.hint}
+                        />
+                        <div className="absolute inset-0 flex items-center justify-center bg-black/40">
+                            <PlayCircle className="w-20 h-20 text-white/80 hover:text-white transition-colors" />
+                        </div>
+                    </div>
+                  ) : project.videoUrl && playingProject === project.title ? (
                     <iframe
-                      src={project.videoUrl}
+                      src={`${project.videoUrl}?autoplay=1&controls=0`}
                       title={project.title}
                       className="w-full h-full"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -114,3 +148,4 @@ export default function ProjectsPage() {
     </section>
   );
 }
+
