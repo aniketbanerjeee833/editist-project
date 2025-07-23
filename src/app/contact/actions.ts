@@ -55,7 +55,6 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       ip: headersList.get('x-forwarded-for') ?? headersList.get('x-real-ip'),
       userAgent: headersList.get('user-agent'),
       referer: headersList.get('referer'),
-      headers: Object.fromEntries(headersList.entries()),
   };
 
   // const { name, email, subject, message } = validatedFields.data;
