@@ -2,11 +2,11 @@
 'use server';
 
 import * as z from 'zod';
-import { Resend } from 'resend';
-import { UserReplyEmail } from './user-reply-template';
+// import { Resend } from 'resend';
+// import { UserReplyEmail } from './user-reply-template';
 import clientPromise from '@/lib/mongodb';
 import { headers } from 'next/headers';
-import { analyzeContactMessage } from '@/ai/flows/analyze-contact-flow';
+// import { analyzeContactMessage } from '@/ai/flows/analyze-contact-flow';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -15,8 +15,8 @@ const formSchema = z.object({
   message: z.string().min(10, { message: 'Message must be at least 10 characters.' }),
 });
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = 'Contact Form <onboarding@resend.dev>'; // This must be a domain you've verified with Resend
+// const resend = new Resend(process.env.RESEND_API_KEY);
+// const fromEmail = 'Contact Form <onboarding@resend.dev>'; // This must be a domain you've verified with Resend
 
 async function saveToDatabase(data: z.infer<typeof formSchema>, metadata: Record<string, any>) {
     if (!process.env.MONGODB_URI || !process.env.MONGODB_DB) {
@@ -58,8 +58,9 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       headers: Object.fromEntries(headersList.entries()),
   };
 
-  const { name, email, subject, message } = validatedFields.data;
+  // const { name, email, subject, message } = validatedFields.data;
 
+  /*
   try {
     // Run AI analysis on the message
     const analysis = await analyzeContactMessage({ message });
@@ -70,10 +71,11 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
     // For now, we'll just log it and continue
     metadata.aiAnalysis = { error: "AI analysis failed." };
   }
+  */
 
 
   try {
-    // Save submission to MongoDB with metadata and AI analysis
+    // Save submission to MongoDB with metadata
     await saveToDatabase(validatedFields.data, metadata);
   } catch (dbError) {
       console.error("Database submission error:", dbError);
@@ -83,7 +85,12 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       }
   }
 
+  return {
+    success: true,
+    message: "Thanks for your message! We have received it.",
+  };
 
+  /*
   if (!process.env.RESEND_API_KEY) {
     console.log("RESEND_API_KEY is not set. Skipping automated reply.");
     return {
@@ -115,4 +122,5 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       message: "Thanks for your message! We couldn't send a confirmation email, but we have received your submission.",
     };
   }
+  */
 }
