@@ -57,7 +57,7 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       referer: headersList.get('referer'),
   };
 
-  // const { name, email, subject, message } = validatedFields.data;
+  const { name, email, subject, message } = validatedFields.data;
 
   /*
   try {
