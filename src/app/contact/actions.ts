@@ -20,8 +20,8 @@ const formSchema = z.object({
 
 async function saveToDatabase(data: z.infer<typeof formSchema>, metadata: Record<string, any>) {
     if (!process.env.MONGODB_URI || !process.env.MONGODB_DB) {
-        console.log("MongoDB environment variables not set. Skipping database save.");
-        return;
+        console.error("MongoDB environment variables not set.");
+        throw new Error("Database not configured. Please set MONGODB_URI and MONGODB_DB in your environment variables.");
     }
     try {
         const client = await clientPromise;
@@ -56,7 +56,7 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
       userAgent: headersList.get('user-agent'),
       referer: headersList.get('referer'),
   };
-
+  
   const { name, email, subject, message } = validatedFields.data;
 
   /*
@@ -76,11 +76,11 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
   try {
     // Save submission to MongoDB with metadata
     await saveToDatabase(validatedFields.data, metadata);
-  } catch (dbError) {
+  } catch (dbError: any) {
       console.error("Database submission error:", dbError);
       return {
           success: false,
-          message: "We couldn't save your message right now. Please try again later.",
+          message: dbError.message || "We couldn't save your message right now. Please try again later.",
       }
   }
 
