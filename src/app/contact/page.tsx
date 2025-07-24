@@ -39,6 +39,7 @@ export default function ContactPage() {
       subject: "",
       message: "",
     },
+    mode: "onChange",
   })
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
@@ -158,4 +159,3 @@ export default function ContactPage() {
     </section>
   );
 }
-
