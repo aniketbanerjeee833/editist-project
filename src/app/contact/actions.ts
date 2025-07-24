@@ -1,4 +1,3 @@
-
 'use server';
 
 import * as z from 'zod';
@@ -20,34 +19,11 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
     };
   }
 
-  try {
-    const res = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/form`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(validatedFields.data),
-    });
+  // Simulate form submission
+  console.log("Form data received:", validatedFields.data);
 
-    if (!res.ok) {
-        const errorData = await res.json();
-        return {
-            success: false,
-            message: errorData.message || "Something went wrong on the server.",
-        }
-    }
-
-    const responseData = await res.json();
-    return {
-      success: true,
-      message: responseData.message,
-    };
-    
-  } catch (error) {
-    console.error("Failed to submit form:", error);
-    return {
-        success: false,
-        message: "An unexpected error occurred. Please try again later.",
-    }
-  }
+  return {
+    success: true,
+    message: "Thanks for your message! We have received it.",
+  };
 }
