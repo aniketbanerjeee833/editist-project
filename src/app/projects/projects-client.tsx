@@ -42,9 +42,21 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
   };
   
   const getYouTubeThumbnail = (videoUrl: string) => {
+    if (!videoUrl.includes("youtube.com")) return null;
     const videoId = videoUrl.split('/').pop()?.split('?')[0];
     return `https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`;
   };
+
+  const getEmbedUrl = (project: Project) => {
+    if (!project.videoUrl) return '';
+    if (project.videoUrl.includes("youtube.com")) {
+      return `${project.videoUrl}?autoplay=1&controls=0`;
+    }
+    if (project.videoUrl.includes("cloudinary.com")) {
+      return project.videoUrl;
+    }
+    return project.videoUrl;
+  }
 
 
   return (
@@ -78,7 +90,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                   {project.videoUrl && playingProject !== project.title ? (
                      <div className="relative w-full h-full cursor-pointer" onClick={() => handlePlayClick(project.title)}>
                         <Image
-                            src={getYouTubeThumbnail(project.videoUrl)}
+                            src={getYouTubeThumbnail(project.videoUrl) || project.imageUrl || "https://placehold.co/600x400.png"}
                             alt={project.title}
                             width={600}
                             height={400}
@@ -92,7 +104,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                     </div>
                   ) : project.videoUrl && playingProject === project.title ? (
                     <iframe
-                      src={`${project.videoUrl}?autoplay=1&controls=0`}
+                      src={getEmbedUrl(project)}
                       title={project.title}
                       className="w-full h-full"
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
