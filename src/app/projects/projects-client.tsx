@@ -53,7 +53,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
       return `${project.videoUrl}?autoplay=1&controls=0`;
     }
     if (project.videoUrl.includes("cloudinary.com")) {
-      return project.videoUrl;
+      return `${project.videoUrl}&player[controls]=false`;
     }
     return project.videoUrl;
   }
