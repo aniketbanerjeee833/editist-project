@@ -84,7 +84,7 @@ export default function Home() {
                   We provide high-quality, professional video editing services to bring your story to life. From corporate videos to cinematic films, we make your content shine.
                 </p>
                 <div className="flex justify-center md:justify-start gap-4">
-                  <Button size="lg" asChild className="transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1">
+                  <Button size="lg" asChild className="transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1 rounded-full">
                     <Link href="/contact">Get in touch</Link>
                   </Button>
                 </div>
