@@ -1,3 +1,4 @@
+
 "use client"
 
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
@@ -71,7 +72,7 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
               viewport={{ once: true, amount: 0.3 }}
               variants={cardVariants}
             >
-              <Card className="overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col bg-gradient-to-br from-card to-secondary/30">
+              <Card className="overflow-hidden h-full flex flex-col bg-gradient-to-br from-card to-secondary/30 transition-all duration-300 ease-out hover:scale-105 hover:shadow-primary/20 hover:shadow-2xl hover:border-primary/50">
                 <CardHeader className="p-0 aspect-video relative">
                   {project.videoUrl && playingProject !== project.title ? (
                      <div className="relative w-full h-full cursor-pointer" onClick={() => handlePlayClick(project.title)}>
