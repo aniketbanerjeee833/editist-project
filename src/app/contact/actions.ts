@@ -6,7 +6,6 @@ import * as z from 'zod';
 // import { UserReplyEmail } from './user-reply-template';
 import clientPromise from '@/lib/mongodb';
 import { headers } from 'next/headers';
-// import { analyzeContactMessage } from '@/ai/flows/analyze-contact-flow';
 
 const formSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters.' }),
@@ -21,7 +20,7 @@ const formSchema = z.object({
 async function saveToDatabase(data: z.infer<typeof formSchema>, metadata: Record<string, any>) {
     if (!process.env.MONGODB_URI || !process.env.MONGODB_DB) {
         console.error("MongoDB environment variables not set.");
-        throw new Error("Database not configured. Please set MONGODB_URI and MONGODB_DB in your environment variables.");
+        throw new Error("Database not configured. Please set MONGODB_URI and MONGODB_DB in your .env file.");
     }
     try {
         const client = await clientPromise;
@@ -58,19 +57,6 @@ export async function submitContactForm(values: z.infer<typeof formSchema>) {
   };
   
   const { name, email, subject, message } = validatedFields.data;
-
-  /*
-  try {
-    // Run AI analysis on the message
-    const analysis = await analyzeContactMessage({ message });
-    metadata.aiAnalysis = analysis;
-  } catch (aiError) {
-    console.error("AI analysis failed:", aiError);
-    // Decide if you want to proceed without AI data or return an error
-    // For now, we'll just log it and continue
-    metadata.aiAnalysis = { error: "AI analysis failed." };
-  }
-  */
 
 
   try {
