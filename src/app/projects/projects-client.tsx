@@ -8,6 +8,7 @@ import { motion } from "framer-motion";
 import { ChevronRight, PlayCircle } from "lucide-react";
 import { useState } from 'react';
 import { Project } from "@/lib/projects";
+import Link from "next/link";
 
 
 type ProjectsClientProps = {
@@ -112,10 +113,12 @@ export default function ProjectsClient({ projects }: ProjectsClientProps) {
                 <CardContent className="p-6 flex flex-col flex-grow items-center">
                   <CardTitle className="text-2xl mb-4 text-center">{project.title}</CardTitle>
                   <div className="mt-auto">
-                    <Button className="transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1">
-                      View Project
-                      <ChevronRight className="h-4 w-4" />
-                    </Button>
+                    <Link href={project.projectUrl} target="_blank" rel="noopener noreferrer">
+                      <Button className="transition-transform duration-300 ease-out hover:scale-105 hover:-translate-y-1">
+                        View Project
+                        <ChevronRight className="h-4 w-4" />
+                      </Button>
+                    </Link>
                   </div>
                 </CardContent>
               </Card>

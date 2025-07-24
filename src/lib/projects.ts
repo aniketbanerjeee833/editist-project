@@ -7,6 +7,7 @@ export type Project = {
   title: string;
   videoUrl?: string;
   imageUrl?: string;
+  projectUrl: string;
   hint: string;
 };
 
