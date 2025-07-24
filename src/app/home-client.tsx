@@ -197,42 +197,6 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
                     </div>
                   </CarouselItem>
                 ))}
-                <CarouselItem className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1">
-                      <Card className="h-full bg-secondary/30 overflow-hidden">
-                        <CardContent className="p-0 flex flex-col items-start gap-4 relative">
-                          <Image
-                            src="https://i.imgur.com/gC51m4A.png"
-                            alt="Video testimonial"
-                            width={500}
-                            height={500}
-                            className="w-full h-full object-cover"
-                            draggable="false"
-                          />
-                           <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-                          <div className="absolute inset-0 flex items-center justify-center">
-                            <Button variant="ghost" size="icon" className="w-16 h-16 bg-white/20 hover:bg-white/30 rounded-full backdrop-blur-sm">
-                              <PlaySquare className="w-8 h-8 text-white" />
-                            </Button>
-                          </div>
-                           <div className="absolute bottom-0 left-0 p-6">
-                            <p className="font-semibold text-white text-lg" style={{fontFamily: "'Space Grotesk', sans-serif"}}>Pri Patat</p>
-                            <p className="text-sm text-white/80">Product Designer at Lightdash</p>
-                          </div>
-                           <div className="absolute top-4 right-4">
-                            <Image
-                                src="https://placehold.co/100x100.png"
-                                alt="Pri Patat"
-                                width={40}
-                                height={40}
-                                className="rounded-full border-2 border-white/50"
-                                draggable="false"
-                            />
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
-                  </CarouselItem>
               </CarouselContent>
               <CarouselPrevious className="hidden md:flex" />
               <CarouselNext className="hidden md:flex" />
