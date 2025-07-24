@@ -1,8 +1,9 @@
+
 "use client"
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Film, Palette, PlaySquare, Star } from "lucide-react"
+import { Film, Palette, PlaySquare, Star, Quote } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -189,9 +190,12 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
                                 <p className="text-sm text-muted-foreground">{testimonial.title}</p>
                             </div>
                            </div>
-                          <blockquote className="text-left text-foreground/90 text-lg flex-grow pt-4">
-                          "{testimonial.quote}"
-                          </blockquote>
+                           <div className="relative text-left text-foreground/90 text-lg flex-grow pt-4">
+                            <Quote className="absolute -top-2 -left-3 w-10 h-10 text-primary/20" />
+                            <blockquote className="pl-4">
+                                {testimonial.quote}
+                            </blockquote>
+                           </div>
                         </CardContent>
                       </Card>
                     </div>
