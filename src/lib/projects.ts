@@ -9,6 +9,7 @@ export type Project = {
   imageUrl?: string;
   projectUrl: string;
   hint: string;
+  showProjectLink?: boolean;
 };
 
 export function getProjects(): Project[] {
