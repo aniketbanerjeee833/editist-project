@@ -82,18 +82,11 @@ export default function RootLayout({
                 <h2 className="text-xl font-bold mb-2">Editist</h2>
                 <p className="text-muted-foreground text-sm">High-quality, professional video editing services to bring your vision to life. We specialize in cinematic editing, color grading, and motion graphics to make your content stand out.</p>
               </div>
-              <div>
+              <div className="md:col-start-4">
                 <h3 className="font-semibold mb-4">Explore</h3>
                 <ul className="space-y-2 text-sm">
-                  <li><Link href="/#features" className="text-muted-foreground hover:text-foreground">Services</Link></li>
                   <li><Link href="/projects" className="text-muted-foreground hover:text-foreground">Portfolio</Link></li>
-                </ul>
-              </div>
-              <div>
-                <h3 className="font-semibold mb-4">Legal</h3>
-                <ul className="space-y-2 text-sm">
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">Privacy Policy</a></li>
-                  <li><a href="#" className="text-muted-foreground hover:text-foreground">Terms of Service</a></li>
+                  <li><Link href="/contact" className="text-muted-foreground hover:text-foreground">Contact</Link></li>
                 </ul>
               </div>
             </div>
