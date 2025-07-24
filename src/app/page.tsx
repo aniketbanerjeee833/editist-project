@@ -69,15 +69,16 @@ export default function Home() {
       <div className="flex flex-col min-h-screen pt-16">
         <motion.section
           id="hero"
-          className="py-20 md:py-32"
+          className="py-20 md:py-32 relative"
           initial="hidden"
           animate="visible"
           variants={sectionVariants}
         >
+          <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,hsl(var(--primary)/0.2),transparent)]" />
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left">
-                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4">
+                <h2 className="text-4xl md:text-6xl font-extrabold tracking-tight mb-4" style={{ textShadow: "0px 0px 15px hsl(var(--primary)/0.4), 0px 0px 5px hsl(var(--primary)/0.4)" }}>
                   Professional Video Editing, For Your Vision
                 </h2>
                 <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto md:mx-0 mb-8">
