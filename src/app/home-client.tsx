@@ -44,8 +44,8 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
 
   const QuoteIcon = () => (
     <svg 
-      width="48" 
-      height="48" 
+      width="30" 
+      height="50" 
       viewBox="0 0 24 24" 
       fill="currentColor"
       className="absolute -top-3 -left-3"
@@ -203,7 +203,7 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
                             </div>
                            </div>
                            <div className="relative text-left text-foreground/90 text-lg flex-grow pt-4">
-                            <div className="text-primary/10">
+                            <div className="text-primary/20">
                               <QuoteIcon />
                             </div>
                             <blockquote className="pl-4">
