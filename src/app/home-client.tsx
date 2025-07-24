@@ -185,7 +185,7 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
               <CarouselContent>
                 {testimonials.map((testimonial, index) => (
                   <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3">
-                    <div className="p-1 h-full">
+                    <div className="p-4 h-full">
                       <Card className="h-full flex flex-col bg-gradient-to-br from-primary/20 via-background to-background border-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-primary/10">
                         <CardContent className="pt-6 flex flex-col items-start gap-4 flex-grow">
                           <div className="flex items-center gap-4 w-full">
