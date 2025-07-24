@@ -6,7 +6,6 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Film, Palette, PlaySquare, Star } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
-import { TimedPopup } from "@/components/timed-popup"
 import Image from "next/image"
 import {
   Carousel,
@@ -263,7 +262,6 @@ export default function Home() {
           </div>
         </motion.section>
       </div>
-      <TimedPopup />
     </>
   )
 }
