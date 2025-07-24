@@ -3,7 +3,7 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Film, Palette, PlaySquare, Star, Quote } from "lucide-react"
+import { Film, Palette, PlaySquare, Star } from "lucide-react"
 import Link from "next/link"
 import { motion } from "framer-motion"
 import Image from "next/image"
@@ -41,6 +41,18 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
       },
     }),
   };
+
+  const QuoteIcon = () => (
+    <svg 
+      width="48" 
+      height="48" 
+      viewBox="0 0 24 24" 
+      fill="currentColor"
+      className="absolute -top-3 -left-3"
+    >
+      <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 9.983-9.57v7.203c-2.71 0-4.411 1.053-4.411 3.489h4.411v6.27h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9.984-9.57v7.203c-2.711 0-4.412 1.053-4.412 3.489h4.412v6.27h-9.984z"/>
+    </svg>
+  );
 
   return (
     <>
@@ -191,7 +203,9 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
                             </div>
                            </div>
                            <div className="relative text-left text-foreground/90 text-lg flex-grow pt-4">
-                            <Quote className="absolute -top-2 -left-3 w-10 h-10 text-primary/20" />
+                            <div className="text-primary/10">
+                              <QuoteIcon />
+                            </div>
                             <blockquote className="pl-4">
                                 {testimonial.quote}
                             </blockquote>
@@ -211,3 +225,5 @@ export default function HomeClient({ testimonials }: HomeClientProps) {
     </>
   )
 }
+
+    
