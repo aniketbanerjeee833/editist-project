@@ -82,13 +82,14 @@ export default function ContactPage() {
           </h2>
           <p className="text-lg text-muted-foreground">
             Or just reach out manually to{" "}
-            <a href="mailto:contact@editist.com" className="text-primary underline">
+            <a href="mailto:letsdobuisnsss09112022@gmail.com" className="text-primary underline">
             contact@editist.com
             </a>
           </p>
         </motion.div>
         
         <motion.div
+          
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
