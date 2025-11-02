@@ -95,7 +95,7 @@ export default function RootLayout({
             <div className="mt-12 pt-8 border-t flex flex-col sm:flex-row justify-between items-center">
               <p className="text-sm text-muted-foreground">&copy; 2023 Editist. All rights reserved.</p>
               <div className="flex gap-4 mt-4 sm:mt-0">
-                <a href="https://www.instagram.com/shakhar_editist_" className="text-muted-foreground hover:text-foreground"><Instagram className="h-5 w-5" /></a>
+                <a href="https://www.instagram.com/_editist_in?igsh=OXcwZ3AxaXFmaDds&utm_source=qr" className="text-muted-foreground hover:text-foreground"><Instagram className="h-5 w-5" /></a>
               </div>
             </div>
           </div>
